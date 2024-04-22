@@ -17,6 +17,8 @@ namespace TPWindowsFormsProgramacionIII
 
         List<Imagenes> listImagenes = new List<Imagenes>();
 
+        public float precio { get; set; }
+
         public Articulos() {;}
 
     }
