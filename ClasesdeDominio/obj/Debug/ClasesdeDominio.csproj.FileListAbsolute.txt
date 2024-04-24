@@ -1,0 +1,6 @@
+C:\Users\AcostaMaria\Desktop\TP2 PIII\ClasesdeDominio\bin\Debug\ClasesdeDominio.dll
+C:\Users\AcostaMaria\Desktop\TP2 PIII\ClasesdeDominio\bin\Debug\ClasesdeDominio.pdb
+C:\Users\AcostaMaria\Desktop\TP2 PIII\ClasesdeDominio\obj\Debug\ClasesdeDominio.csproj.AssemblyReference.cache
+C:\Users\AcostaMaria\Desktop\TP2 PIII\ClasesdeDominio\obj\Debug\ClasesdeDominio.csproj.CoreCompileInputs.cache
+C:\Users\AcostaMaria\Desktop\TP2 PIII\ClasesdeDominio\obj\Debug\ClasesdeDominio.dll
+C:\Users\AcostaMaria\Desktop\TP2 PIII\ClasesdeDominio\obj\Debug\ClasesdeDominio.pdb
