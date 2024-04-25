@@ -1,0 +1,17 @@
+C:\Users\AcostaMaria\Desktop\TP2 PIII\TPWindowsForms-Programacion-III\obj\Debug\TPWindowsFormsProgramacionIII.csproj.AssemblyReference.cache
+C:\Users\AcostaMaria\Desktop\TP2 PIII\TPWindowsForms-Programacion-III\bin\Debug\TPWindowsFormsProgramacionIII.exe.config
+C:\Users\AcostaMaria\Desktop\TP2 PIII\TPWindowsForms-Programacion-III\bin\Debug\TPWindowsFormsProgramacionIII.exe
+C:\Users\AcostaMaria\Desktop\TP2 PIII\TPWindowsForms-Programacion-III\bin\Debug\TPWindowsFormsProgramacionIII.pdb
+C:\Users\AcostaMaria\Desktop\TP2 PIII\TPWindowsForms-Programacion-III\bin\Debug\ClasesdeDominio.dll
+C:\Users\AcostaMaria\Desktop\TP2 PIII\TPWindowsForms-Programacion-III\bin\Debug\FontAwesome.Sharp.dll
+C:\Users\AcostaMaria\Desktop\TP2 PIII\TPWindowsForms-Programacion-III\bin\Debug\Negocio.dll
+C:\Users\AcostaMaria\Desktop\TP2 PIII\TPWindowsForms-Programacion-III\bin\Debug\ClasesdeDominio.pdb
+C:\Users\AcostaMaria\Desktop\TP2 PIII\TPWindowsForms-Programacion-III\bin\Debug\Negocio.pdb
+C:\Users\AcostaMaria\Desktop\TP2 PIII\TPWindowsForms-Programacion-III\obj\Debug\TPWindowsFormsProgramacionIII.VentanaListarArticulos.resources
+C:\Users\AcostaMaria\Desktop\TP2 PIII\TPWindowsForms-Programacion-III\obj\Debug\TPWindowsFormsProgramacionIII.VentanaPrincipal.resources
+C:\Users\AcostaMaria\Desktop\TP2 PIII\TPWindowsForms-Programacion-III\obj\Debug\TPWindowsFormsProgramacionIII.Properties.Resources.resources
+C:\Users\AcostaMaria\Desktop\TP2 PIII\TPWindowsForms-Programacion-III\obj\Debug\TPWindowsFormsProgramacionIII.csproj.GenerateResource.cache
+C:\Users\AcostaMaria\Desktop\TP2 PIII\TPWindowsForms-Programacion-III\obj\Debug\TPWindowsFormsProgramacionIII.csproj.CoreCompileInputs.cache
+C:\Users\AcostaMaria\Desktop\TP2 PIII\TPWindowsForms-Programacion-III\obj\Debug\TPWindowsFormsProgramacionIII.csproj.CopyComplete
+C:\Users\AcostaMaria\Desktop\TP2 PIII\TPWindowsForms-Programacion-III\obj\Debug\TPWindowsFormsProgramacionIII.exe
+C:\Users\AcostaMaria\Desktop\TP2 PIII\TPWindowsForms-Programacion-III\obj\Debug\TPWindowsFormsProgramacionIII.pdb
