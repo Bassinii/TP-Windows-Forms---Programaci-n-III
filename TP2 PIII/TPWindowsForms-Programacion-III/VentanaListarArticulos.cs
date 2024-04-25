@@ -41,6 +41,7 @@ namespace TPWindowsFormsProgramacionIII
             listaArticulos =negocio.listar();
             
                 gdvListadoDeArticulos.DataSource = listaArticulos;
+            //gdvListadoDeArticulos.Columns["ImagenUrl"].Visible = false;
             
             cargarImagen(listaArticulos[0].imagenArticulo.urlImagen);
             
