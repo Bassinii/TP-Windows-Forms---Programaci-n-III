@@ -1,9 +1,0 @@
-C:\Users\AcostaMaria\Desktop\TP2 PIII\Negocio\bin\Debug\Negocio.dll
-C:\Users\AcostaMaria\Desktop\TP2 PIII\Negocio\bin\Debug\Negocio.pdb
-C:\Users\AcostaMaria\Desktop\TP2 PIII\Negocio\bin\Debug\ClasesdeDominio.dll
-C:\Users\AcostaMaria\Desktop\TP2 PIII\Negocio\bin\Debug\ClasesdeDominio.pdb
-C:\Users\AcostaMaria\Desktop\TP2 PIII\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
-C:\Users\AcostaMaria\Desktop\TP2 PIII\Negocio\obj\Debug\Negocio.csproj.CopyComplete
-C:\Users\AcostaMaria\Desktop\TP2 PIII\Negocio\obj\Debug\Negocio.dll
-C:\Users\AcostaMaria\Desktop\TP2 PIII\Negocio\obj\Debug\Negocio.pdb
-C:\Users\AcostaMaria\Desktop\TP2 PIII\Negocio\obj\Debug\Negocio.csproj.AssemblyReference.cache
