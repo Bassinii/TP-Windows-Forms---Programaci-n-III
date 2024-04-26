@@ -88,8 +88,27 @@ namespace Negocio
                 datosArticulo.CerrarConexion();
             }
         }
+
+
+        public void agregar(Articulo aux)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+
+                datos.setearConsulta(" Insert into ARTICULOS (Id,Codigo,Nombre,Descripcion, IdMarca, IdCategoria, Precio) Values(" + aux.id + ",'', '" + aux.nombre + "','" + aux.descripcion + "','','','')");
+                datos.ejecutarAccion();
+            }        
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
+
     }
-}
-           
-        
-            
+}      

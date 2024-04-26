@@ -53,6 +53,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="VentanaAgregarArticulo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VentanaAgregarArticulo.Designer.cs">
+      <DependentUpon>VentanaAgregarArticulo.cs</DependentUpon>
+    </Compile>
     <Compile Include="VentanaListarArticulos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,6 +73,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="VentanaAgregarArticulo.resx">
+      <DependentUpon>VentanaAgregarArticulo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VentanaListarArticulos.resx">
       <DependentUpon>VentanaListarArticulos.cs</DependentUpon>
     </EmbeddedResource>

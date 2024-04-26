@@ -30,6 +30,7 @@
         {
             this.gdvListadoDeArticulos = new System.Windows.Forms.DataGridView();
             this.pictureBoxImagen = new System.Windows.Forms.PictureBox();
+            this.buttonAgregar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gdvListadoDeArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImagen)).BeginInit();
             this.SuspendLayout();
@@ -55,11 +56,22 @@
             this.pictureBoxImagen.TabIndex = 1;
             this.pictureBoxImagen.TabStop = false;
             // 
+            // buttonAgregar
+            // 
+            this.buttonAgregar.Location = new System.Drawing.Point(13, 268);
+            this.buttonAgregar.Name = "buttonAgregar";
+            this.buttonAgregar.Size = new System.Drawing.Size(214, 25);
+            this.buttonAgregar.TabIndex = 2;
+            this.buttonAgregar.Text = "Agregar";
+            this.buttonAgregar.UseVisualStyleBackColor = true;
+            this.buttonAgregar.Click += new System.EventHandler(this.buttonAgregar_Click);
+            // 
             // VentanaListarArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(891, 340);
+            this.Controls.Add(this.buttonAgregar);
             this.Controls.Add(this.pictureBoxImagen);
             this.Controls.Add(this.gdvListadoDeArticulos);
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -76,5 +88,6 @@
 
         private System.Windows.Forms.DataGridView gdvListadoDeArticulos;
         private System.Windows.Forms.PictureBox pictureBoxImagen;
+        private System.Windows.Forms.Button buttonAgregar;
     }
 }
