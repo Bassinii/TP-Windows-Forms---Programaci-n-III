@@ -53,14 +53,17 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccesoDatos.cs" />
-    <Compile Include="Articulos.cs" />
-    <Compile Include="Categorias.cs" />
-    <Compile Include="ListarArticulos.cs">
+    <Compile Include="VentanaAgregarArticulo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ListarArticulos.Designer.cs">
-      <DependentUpon>ListarArticulos.cs</DependentUpon>
+    <Compile Include="VentanaAgregarArticulo.Designer.cs">
+      <DependentUpon>VentanaAgregarArticulo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VentanaListarArticulos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VentanaListarArticulos.Designer.cs">
+      <DependentUpon>VentanaListarArticulos.cs</DependentUpon>
     </Compile>
     <Compile Include="VentanaPrincipal.cs">
       <SubType>Form</SubType>
@@ -68,12 +71,13 @@
     <Compile Include="VentanaPrincipal.Designer.cs">
       <DependentUpon>VentanaPrincipal.cs</DependentUpon>
     </Compile>
-    <Compile Include="Imagenes.cs" />
-    <Compile Include="Marcas.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ListarArticulos.resx">
-      <DependentUpon>ListarArticulos.cs</DependentUpon>
+    <EmbeddedResource Include="VentanaAgregarArticulo.resx">
+      <DependentUpon>VentanaAgregarArticulo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VentanaListarArticulos.resx">
+      <DependentUpon>VentanaListarArticulos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VentanaPrincipal.resx">
       <DependentUpon>VentanaPrincipal.cs</DependentUpon>
@@ -101,6 +105,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ClasesdeDominio\ClasesdeDominio.csproj">
+      <Project>{a3e01b90-eaf1-453b-b249-9ecec46cadf3}</Project>
+      <Name>ClasesdeDominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Negocio\Negocio.csproj">
+      <Project>{2d757559-cadf-4890-bcb7-7f42ce022952}</Project>
+      <Name>Negocio</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

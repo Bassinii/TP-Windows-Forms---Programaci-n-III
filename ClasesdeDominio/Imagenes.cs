@@ -10,6 +10,10 @@ namespace ClasesdeDominio
         public int id { get; set; }
         public string urlImagen { get; set; }
         public int idArticulo { get; set; }
+        public override string ToString()
+        {
+            return urlImagen;
+        }
 
     }
 }

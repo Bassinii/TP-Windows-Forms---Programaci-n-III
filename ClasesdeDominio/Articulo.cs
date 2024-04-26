@@ -15,8 +15,8 @@ namespace ClasesdeDominio
         public Marca marca { get; set; }
         public Categoria categoria { get; set; }
 
-        List<Imagenes> listImagenes = new List<Imagenes>();
-
+        //List<Imagenes> listImagenes = new List<Imagenes>();
+        public Imagenes imagenArticulo;
         public float precio { get; set; }
 
         public Articulo() {;}

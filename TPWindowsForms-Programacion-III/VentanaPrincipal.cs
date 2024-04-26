@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ClasesdeDominio;
+using Negocio;
 
 namespace TPWindowsFormsProgramacionIII
 {
@@ -19,13 +21,14 @@ namespace TPWindowsFormsProgramacionIII
 
         private void listaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ListarArticulos Lista = new ListarArticulos();
+            VentanaListarArticulos Lista = new VentanaListarArticulos();
             Lista.Show();
         }
 
         private void agregarArticulosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            VentanaAgregarArticulo Lista = new VentanaAgregarArticulo();
+            Lista.Show();
         }
     }
 }

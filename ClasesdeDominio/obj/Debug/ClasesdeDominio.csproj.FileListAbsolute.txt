@@ -4,3 +4,9 @@ C:\Users\AcostaMaria\Desktop\TP2 PIII\ClasesdeDominio\obj\Debug\ClasesdeDominio.
 C:\Users\AcostaMaria\Desktop\TP2 PIII\ClasesdeDominio\obj\Debug\ClasesdeDominio.csproj.CoreCompileInputs.cache
 C:\Users\AcostaMaria\Desktop\TP2 PIII\ClasesdeDominio\obj\Debug\ClasesdeDominio.dll
 C:\Users\AcostaMaria\Desktop\TP2 PIII\ClasesdeDominio\obj\Debug\ClasesdeDominio.pdb
+C:\Users\Bruno\Desktop\UTN\Tercer Cuatrimestre\Programacion III\TP2\TPWindowsForms-Programacion-III\TP2 PIII\ClasesdeDominio\bin\Debug\ClasesdeDominio.dll
+C:\Users\Bruno\Desktop\UTN\Tercer Cuatrimestre\Programacion III\TP2\TPWindowsForms-Programacion-III\TP2 PIII\ClasesdeDominio\bin\Debug\ClasesdeDominio.pdb
+C:\Users\Bruno\Desktop\UTN\Tercer Cuatrimestre\Programacion III\TP2\TPWindowsForms-Programacion-III\TP2 PIII\ClasesdeDominio\obj\Debug\ClasesdeDominio.csproj.AssemblyReference.cache
+C:\Users\Bruno\Desktop\UTN\Tercer Cuatrimestre\Programacion III\TP2\TPWindowsForms-Programacion-III\TP2 PIII\ClasesdeDominio\obj\Debug\ClasesdeDominio.csproj.CoreCompileInputs.cache
+C:\Users\Bruno\Desktop\UTN\Tercer Cuatrimestre\Programacion III\TP2\TPWindowsForms-Programacion-III\TP2 PIII\ClasesdeDominio\obj\Debug\ClasesdeDominio.dll
+C:\Users\Bruno\Desktop\UTN\Tercer Cuatrimestre\Programacion III\TP2\TPWindowsForms-Programacion-III\TP2 PIII\ClasesdeDominio\obj\Debug\ClasesdeDominio.pdb
