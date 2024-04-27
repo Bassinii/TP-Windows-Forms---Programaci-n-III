@@ -25,7 +25,9 @@ namespace Negocio
             {
                 //datosArticulo.setearConsulta("SELECT A.Id,Codigo,Nombre,A.Descripcion, M.Descripcion Marca,C.Descripcion Categoria,Precio,I.ImagenUrl FROM Articulos A, Categorias C, Marcas M, IMAGENES I WHERE A.Id = C.Id AND M.Id = A.Id AND I.Id=A.Id");
                 // datosArticulo.setearConsulta("SELECT A.Id,Codigo,Nombre,A.Descripcion,A.Descripcion, A.IdMarca , A.Precio,I.ImagenUrl FROM Articulos A, IMAGENES I WHERE A.Id = I.Id");
-                datosArticulo.setearConsulta("SELECT A.Id, A.Codigo, A.Nombre, A.Descripcion, M.Descripcion AS Marca, C.Descripcion AS Categoria, A.Precio, I.ImagenUrl FROM Articulos A LEFT JOIN Categorias C ON A.IdCategoria = C.Id LEFT JOIN Marcas M ON A.IdMarca = M.Id LEFT JOIN IMAGENES I ON A.Id = I.Id");
+
+                //Se Modifica consulta
+                datosArticulo.setearConsulta("SELECT A.Id, A.Codigo, A.Nombre, A.Descripcion, M.Descripcion AS Marca, C.Descripcion AS Categoria, A.Precio, I.ImagenUrl FROM Articulos A LEFT JOIN Categorias C ON A.IdCategoria = C.Id LEFT JOIN Marcas M ON A.IdMarca = M.Id LEFT JOIN IMAGENES I ON A.Id = I.IdArticulo");
 
                 datosArticulo.ejecutarLectura();
 
@@ -51,7 +53,9 @@ namespace Negocio
                     }
                     aux.categoria = new Categoria { descripcion = categoria };
                     aux.precio = (float)datosArticulo.Lector.GetDecimal(6);
-                    aux.imagenArticulo = new Imagenes { urlImagen = (string)datosArticulo.Lector["ImagenUrl"] };
+                    //corregimos para que acepte las imagenes 
+                    if (!(datosArticulo.Lector["ImagenUrl"] is DBNull))
+                        aux.imagenArticulo = new Imagenes { urlImagen = (string)datosArticulo.Lector["ImagenUrl"] };
 
 
                     lista.Add(aux);
