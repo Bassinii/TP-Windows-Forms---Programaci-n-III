@@ -37,6 +37,19 @@ namespace TPWindowsFormsProgramacionIII
 
         private void ListarArticulos_Load(object sender, EventArgs e)
         {
+            cargar(); //Se pasa dentro del metodo cargar
+        }
+
+            private void gdvListadoDeArticulos_SelectionChanged(object sender, EventArgs e) 
+        {
+            Articulo seleccionado = (Articulo)gdvListadoDeArticulos.CurrentRow.DataBoundItem;
+            cargarImagen(seleccionado.imagenArticulo.urlImagen);
+
+        }
+
+        //Se crea Metodo cargar
+        private void cargar()
+        {
             NegocioArticulo negocio = new NegocioArticulo();
             try
             {
@@ -52,13 +65,6 @@ namespace TPWindowsFormsProgramacionIII
             {
                 MessageBox.Show(ex.ToString());
             }
-        }
-
-            private void gdvListadoDeArticulos_SelectionChanged(object sender, EventArgs e) 
-        {
-            Articulo seleccionado = (Articulo)gdvListadoDeArticulos.CurrentRow.DataBoundItem;
-            cargarImagen(seleccionado.imagenArticulo.urlImagen);
-
         }
         private void cargarImagen(string imagen)
         {
@@ -78,6 +84,7 @@ namespace TPWindowsFormsProgramacionIII
         {
             VentanaAgregarArticulo alta = new VentanaAgregarArticulo();
             alta.ShowDialog();
+            cargar(); //Para que puede mostrar en la grilla nuevamente lo cargado
         }
 
         private void button3_Click(object sender, EventArgs e)
