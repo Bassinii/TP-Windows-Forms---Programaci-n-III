@@ -30,6 +30,7 @@ namespace TPWindowsFormsProgramacionIII
             NegocioArticulo artiNeg = new NegocioArticulo();
             try
             {
+                arti.id = int.Parse(textID.Text);
                 arti.nombre = textBoxNombre.Text;
                 arti.descripcion = textBoxDescripcion.Text;
                 arti.codigo = textBoxCodigo.Text;
@@ -38,16 +39,22 @@ namespace TPWindowsFormsProgramacionIII
                 arti.categoria = new Categoria { id = int.Parse(textBoxCategoria.Text)};
                 
                 arti.precio = float.Parse(textBoxPrecio.Text);
+                arti.imagenArticulo = new Imagenes { urlImagen = textBoxUrlImagen.Text };
 
 
-                artiNeg.agregar(arti);
+                artiNeg.agregar(arti, arti.imagenArticulo.urlImagen);
+                
                 MessageBox.Show("Agregado exitosamente");
-                Close();
+                
             }
             catch (Exception ex)
             {
 
                 MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                Close();
             }
         }
     }

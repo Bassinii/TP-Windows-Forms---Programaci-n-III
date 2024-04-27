@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace Negocio
 {
@@ -39,6 +40,7 @@ namespace Negocio
             {
                 conexion.Open();
                 lector = comando.ExecuteReader();
+            
             }
             catch (Exception ex)
             {
@@ -55,6 +57,7 @@ namespace Negocio
             {
                 conexion.Open();
                 comando.ExecuteNonQuery();
+                CerrarConexion();
             }
             catch (Exception ex)
             {
@@ -64,6 +67,7 @@ namespace Negocio
         }
         public void CerrarConexion()
         {
+            MessageBox.Show("ME ESTOY CERRANDO");
             if (lector != null)
                 lector.Close();
             conexion.Close();

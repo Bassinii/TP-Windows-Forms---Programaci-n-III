@@ -27,8 +27,7 @@ namespace TPWindowsFormsProgramacionIII
 
         private void agregarArticulosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            VentanaAgregarArticulo Lista = new VentanaAgregarArticulo();
-            Lista.Show();
+
         }
     }
 }
