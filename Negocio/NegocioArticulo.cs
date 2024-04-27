@@ -22,9 +22,9 @@ namespace Negocio
             try
             {
                 //datosArticulo.setearConsulta("SELECT A.Id,Codigo,Nombre,A.Descripcion, M.Descripcion Marca,C.Descripcion Categoria,Precio,I.ImagenUrl FROM Articulos A, Categorias C, Marcas M, IMAGENES I WHERE A.Id = C.Id AND M.Id = A.Id AND I.Id=A.Id");
-                datosArticulo.setearConsulta("SELECT A.Id,Codigo,Nombre,A.Descripcion,A.Descripcion, A.IdMarca , A.Precio,I.ImagenUrl FROM Articulos A, IMAGENES I WHERE A.Id = I.Id");
+                // datosArticulo.setearConsulta("SELECT A.Id,Codigo,Nombre,A.Descripcion,A.Descripcion, A.IdMarca , A.Precio,I.ImagenUrl FROM Articulos A, IMAGENES I WHERE A.Id = I.Id");
+                datosArticulo.setearConsulta("SELECT A.Id, A.Codigo, A.Nombre, A.Descripcion, M.Descripcion AS Marca, C.Descripcion AS Categoria, A.Precio, I.ImagenUrl FROM Articulos A LEFT JOIN Categorias C ON A.IdCategoria = C.Id LEFT JOIN Marcas M ON A.IdMarca = M.Id LEFT JOIN IMAGENES I ON A.Id = I.Id");
 
-                
                 datosArticulo.ejecutarLectura();
 
                 while (datosArticulo.Lector.Read())
@@ -36,6 +36,18 @@ namespace Negocio
                     aux.descripcion = (string)datosArticulo.Lector["Descripcion"];
                     //aux.marca = new Marca { id = int.Parse(textbox) };
                     //aux.categoria = new Categoria { descripcion = (string)datosArticulo.Lector["Categoria"] };
+                    aux.marca = new Marca { descripcion = (string)datosArticulo.Lector["Marca"] };
+                    string categoria = string.Empty;
+                    if (!datosArticulo.Lector.IsDBNull(datosArticulo.Lector.GetOrdinal("Categoria")))
+                    {
+                        categoria = (string)datosArticulo.Lector["Categoria"];
+                    }
+                    else
+                    {
+                        // Si la categoría es NULL en la base de datos, asigna un valor predeterminado o un mensaje alternativo.
+                        categoria = "Sin categoría";
+                    }
+                    aux.categoria = new Categoria { descripcion = categoria };
                     aux.precio = (float)datosArticulo.Lector.GetDecimal(6);
                     aux.imagenArticulo = new Imagenes { urlImagen = (string)datosArticulo.Lector["ImagenUrl"] };
 
