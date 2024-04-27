@@ -107,9 +107,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ClasesdeDominio\ClasesdeDominio.csproj">
+    <ProjectReference Include="..\ClasesdeDominio\ClasesDeDominio.csproj">
       <Project>{a3e01b90-eaf1-453b-b249-9ecec46cadf3}</Project>
-      <Name>ClasesdeDominio</Name>
+      <Name>ClasesDeDominio</Name>
     </ProjectReference>
     <ProjectReference Include="..\Negocio\Negocio.csproj">
       <Project>{2d757559-cadf-4890-bcb7-7f42ce022952}</Project>

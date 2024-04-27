@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ClasesdeDominio;
+using ClasesDeDominio;
 using Negocio;
 
 namespace TPWindowsFormsProgramacionIII
@@ -27,7 +27,8 @@ namespace TPWindowsFormsProgramacionIII
 
         private void agregarArticulosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            VentanaAgregarArticulo Alta = new VentanaAgregarArticulo();
+            Alta.Show();
         }
     }
 }

@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Negocio;
-using ClasesdeDominio;
+using ClasesDeDominio;
 
 namespace TPWindowsFormsProgramacionIII
 {
@@ -38,15 +38,23 @@ namespace TPWindowsFormsProgramacionIII
         private void ListarArticulos_Load(object sender, EventArgs e)
         {
             NegocioArticulo negocio = new NegocioArticulo();
-            listaArticulos =negocio.listar();
-            
+            try
+            {
+                listaArticulos = negocio.listar();
+
                 gdvListadoDeArticulos.DataSource = listaArticulos;
-            //gdvListadoDeArticulos.Columns["ImagenUrl"].Visible = false;
-            
-            cargarImagen(listaArticulos[0].imagenArticulo.urlImagen);
-            
+                //gdvListadoDeArticulos.Columns["ImagenUrl"].Visible = false;
+
+                cargarImagen(listaArticulos[0].imagenArticulo.urlImagen);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
-        private void gdvListadoDeArticulos_SelectionChanged(object sender, EventArgs e) 
+
+            private void gdvListadoDeArticulos_SelectionChanged(object sender, EventArgs e) 
         {
             Articulo seleccionado = (Articulo)gdvListadoDeArticulos.CurrentRow.DataBoundItem;
             cargarImagen(seleccionado.imagenArticulo.urlImagen);
@@ -58,11 +66,10 @@ namespace TPWindowsFormsProgramacionIII
             {
                 pictureBoxImagen.Load(imagen);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                //MessageBox.Show(ex.ToString());
                 pictureBoxImagen.Load("https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg");
-
+                
             }
             
         }
@@ -71,6 +78,11 @@ namespace TPWindowsFormsProgramacionIII
         {
             VentanaAgregarArticulo alta = new VentanaAgregarArticulo();
             alta.ShowDialog();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 

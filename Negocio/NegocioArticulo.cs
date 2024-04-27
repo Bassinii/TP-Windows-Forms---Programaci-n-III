@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
-using ClasesdeDominio;
+using ClasesDeDominio;
 using System.Windows.Forms;
+using System.Data;
+using System.Drawing;
 
 namespace Negocio
 {
@@ -59,7 +61,7 @@ namespace Negocio
             }
             catch (Exception ex)
             {
-
+                MessageBox.Show(ex.ToString());
                 throw ex;
             }
             finally

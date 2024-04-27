@@ -67,7 +67,6 @@ namespace Negocio
         }
         public void CerrarConexion()
         {
-            MessageBox.Show("ME ESTOY CERRANDO");
             if (lector != null)
                 lector.Close();
             conexion.Close();
