@@ -43,7 +43,10 @@ namespace TPWindowsFormsProgramacionIII
             private void gdvListadoDeArticulos_SelectionChanged(object sender, EventArgs e) 
         {
             Articulo seleccionado = (Articulo)gdvListadoDeArticulos.CurrentRow.DataBoundItem;
-            cargarImagen(seleccionado.imagenArticulo.urlImagen);
+            //cargarImagen(seleccionado.imagenArticulo.urlImagen);
+            //se corrige Metodo para que acepte imagenes en Null
+            string urlImagen = seleccionado.imagenArticulo != null ? seleccionado.imagenArticulo.urlImagen : null;
+            cargarImagen(urlImagen);
 
         }
 
@@ -90,6 +93,23 @@ namespace TPWindowsFormsProgramacionIII
         private void button3_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void buttonEliminar_Click(object sender, EventArgs e)
+        {
+            NegocioArticulo baja = new NegocioArticulo();
+            Articulo seleccionado;
+            try
+            {
+                seleccionado = (Articulo)gdvListadoDeArticulos.CurrentRow.DataBoundItem;
+                baja.eliminar(seleccionado.id);
+                cargar();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 
