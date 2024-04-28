@@ -17,10 +17,17 @@ namespace TPWindowsFormsProgramacionIII
     {
         List<Marca> marcas;
         List<Categoria> categorias;
+        private Articulo articulo = null;
 
         public VentanaAgregarArticulo()
         {
             InitializeComponent();
+        }
+        public VentanaAgregarArticulo(Articulo arti)
+        {
+            InitializeComponent();
+            this.articulo = arti;
+            Text = "Modificar articulo";
         }
 
 
@@ -40,6 +47,23 @@ namespace TPWindowsFormsProgramacionIII
             {
                 comboBoxCat2.Items.Add(categoria);
             }
+            cboMarca.ValueMember = "Id";
+            cboMarca.DisplayMember = "Descripcion";
+            comboBoxCat2.ValueMember = "Id";
+            comboBoxCat2.DisplayMember = "Descripcion";
+
+            if (articulo != null)
+            {
+                textBoxNombre.Text = articulo.nombre;
+                textBoxDescripcion.Text = articulo.descripcion;
+                textBoxCodigo.Text = articulo.codigo;
+                textBoxPrecio.Text = articulo.precio.ToString();
+                textBoxUrlImagen.Text = articulo.imagenArticulo.urlImagen;
+                cargarImagen(articulo.imagenArticulo.urlImagen);
+                cboMarca.SelectedValue = articulo.marca.id;
+                comboBoxCat2.SelectedValue = articulo.categoria.id;
+            }
+
         }
 
         private void buttonCancelar_Click(object sender, EventArgs e)
@@ -49,29 +73,41 @@ namespace TPWindowsFormsProgramacionIII
 
         private void buttonAceptar_Click(object sender, EventArgs e)
         {
-            Articulo arti = new Articulo();
             NegocioArticulo artiNeg = new NegocioArticulo();
+
+            if (articulo == null)
+            {
+                articulo = new Articulo();
+            }
             try
             {
-                arti.nombre = textBoxNombre.Text;
-                arti.descripcion = textBoxDescripcion.Text;
-                arti.codigo = textBoxCodigo.Text;
-                arti.precio = float.Parse(textBoxPrecio.Text);
-                arti.imagenArticulo = new Imagenes { urlImagen = textBoxUrlImagen.Text };
+                articulo.nombre = textBoxNombre.Text;
+                articulo.descripcion = textBoxDescripcion.Text;
+                articulo.codigo = textBoxCodigo.Text;
+                articulo.precio = float.Parse(textBoxPrecio.Text);
+                articulo.imagenArticulo = new Imagenes { urlImagen = textBoxUrlImagen.Text };
                 //SELECCION DE MARCA
                
                 Marca marcaSeleccionada = (Marca)cboMarca.SelectedItem;
-                arti.marca.descripcion = marcaSeleccionada.descripcion;
-                arti.marca.id = marcaSeleccionada.id;
+                articulo.marca.descripcion = marcaSeleccionada.descripcion;
+                articulo.marca.id = marcaSeleccionada.id;
                 //SELECCION CATEGORIA
                 Categoria categoriaSeleccionada = (Categoria)comboBoxCat2.SelectedItem;
-                arti.categoria.descripcion = categoriaSeleccionada.descripcion;
-                arti.categoria.id = categoriaSeleccionada.id;
+                articulo.categoria.descripcion = categoriaSeleccionada.descripcion;
+                articulo.categoria.id = categoriaSeleccionada.id;
 
-                artiNeg.agregar(arti, arti.imagenArticulo.urlImagen);
-                
-                MessageBox.Show("Agregado exitosamente");
-                
+                if (articulo.id != 0)
+                {
+
+                    artiNeg.modificar(articulo);
+                    MessageBox.Show("Modificado correctamente");
+                }
+                else
+                {
+                    artiNeg.agregar(articulo, articulo.imagenArticulo.urlImagen);
+                    MessageBox.Show("Agregado exitosamente");
+                }
+
             }
             catch (Exception ex)
             {

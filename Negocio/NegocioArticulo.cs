@@ -28,8 +28,7 @@ namespace Negocio
                 // datosArticulo.setearConsulta("SELECT A.Id,Codigo,Nombre,A.Descripcion,A.Descripcion, A.IdMarca , A.Precio,I.ImagenUrl FROM Articulos A, IMAGENES I WHERE A.Id = I.Id");
 
                 //Se Modifica consulta
-                datosArticulo.setearConsulta("SELECT A.Id, A.Codigo, A.Nombre, A.Descripcion, M.Descripcion AS Marca, C.Descripcion AS Categoria, A.Precio, I.ImagenUrl FROM Articulos A LEFT JOIN Categorias C ON A.IdCategoria = C.Id LEFT JOIN Marcas M ON A.IdMarca = M.Id LEFT JOIN IMAGENES I ON A.Id = I.IdArticulo");
-
+                datosArticulo.setearConsulta("SELECT A.Id, A.Codigo, A.Nombre, A.Descripcion, M.Descripcion AS Marca, C.Descripcion AS Categoria, A.Precio, I.ImagenUrl, M.Id, C.Id FROM ARTICULOS A LEFT JOIN Categorias C ON A.IdCategoria = C.Id LEFT JOIN Marcas M ON A.IdMarca = M.Id LEFT JOIN IMAGENES I ON A.Id = I.IdArticulo");
                 datosArticulo.ejecutarLectura();
 
                 while (datosArticulo.Lector.Read())
@@ -41,11 +40,13 @@ namespace Negocio
                     aux.descripcion = (string)datosArticulo.Lector["Descripcion"];
                     //aux.marca = new Marca { id = int.Parse(textbox) };
                     //aux.categoria = new Categoria { descripcion = (string)datosArticulo.Lector["Categoria"] };
-                    aux.marca = new Marca { descripcion = (string)datosArticulo.Lector["Marca"] };
+                    aux.marca = new Marca { descripcion = (string)datosArticulo.Lector["Marca"], id = datosArticulo.Lector.GetInt32(8) };
                     string categoria = string.Empty;
                     if (!datosArticulo.Lector.IsDBNull(datosArticulo.Lector.GetOrdinal("Categoria")))
                     {
-                        categoria = (string)datosArticulo.Lector["Categoria"];
+                        //categoria = (string)datosArticulo.Lector["Categoria"];
+                        aux.categoria = new Categoria { descripcion = (string)datosArticulo.Lector["Categoria"], id = datosArticulo.Lector.GetInt32(9) };
+
                     }
                     else
                     {
@@ -166,6 +167,80 @@ namespace Negocio
                 datos.CerrarConexion();
             }
         }
+
+        public void modificar(Articulo articulo)
+        {
+
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+
+                datos.setearConsulta(@" 
+                        UPDATE ARTICULOS 
+                        SET 
+                            Codigo = @numero, 
+                            Nombre = @NombreA, 
+                            Descripcion = @DescripcionA, 
+                            IdMarca = @MarcaA, 
+                            IdCategoria = @IdcategoriaA, 
+                            Precio = @PrecioA  
+                        WHERE 
+                            id = @IdArticulo;
+
+                        UPDATE IMAGENES 
+                        SET 
+                            IdArticulo = @IdarticuloI, 
+                            ImagenUrl = @imURLI 
+                        WHERE 
+                            id = @IdImagen;
+
+                        UPDATE MARCAS 
+                        SET 
+                            Descripcion = @DescripcionM 
+                        WHERE 
+                            id = @IdMarca;
+
+                        UPDATE CATEGORIAS 
+                        SET 
+                            Descripcion = @DescripcionC 
+                        WHERE 
+                            id = @IdCategoria");
+                //datos.setearConsulta(" UPDATE ARTICULOS set Codigo = @numero, Nombre = @NombreA, Descripcion = @DescripcionA, IdMarca = @MarcaA , IdCategoria = @IdcategoriaA, Precio = @PrecioA  Where id=" + articulo.id +"  ") ;
+                //datos.setearConsulta(" UPDATE IMAGENES set IdArticulo = @IdarticuloI, ImagenUrl = @imURLI where id =" + articulo.imagenArticulo.idArticulo + " ");
+                //datos.setearConsulta(" UPDATE MARCAS set Descripcion = @DescripcionM where id = " + articulo.marca.id + " ");
+                //datos.setearConsulta(" UPDATE CATEGORIAS set Descripcion = @DescripcionC where id = " + articulo.categoria.id + " ");
+
+                datos.setearParametro("@IdArticulo", articulo.id);
+                datos.setearParametro("@IdImagen", articulo.imagenArticulo.idArticulo);
+                datos.setearParametro("@IdMarca", articulo.marca.id);
+                datos.setearParametro("@IdCategoria", articulo.categoria.id);
+                datos.setearParametro("@numero", articulo.codigo.ToString());
+                datos.setearParametro("@NombreA", articulo.nombre);
+                datos.setearParametro("@DescripcionA", articulo.descripcion);
+                datos.setearParametro("@MarcaA", articulo.marca.id);
+                datos.setearParametro("@IdcategoriaA", articulo.categoria.id);
+                datos.setearParametro("@PrecioA", articulo.precio);
+                datos.setearParametro("@IdarticuloI", articulo.imagenArticulo.id);
+                datos.setearParametro("@imURLI", articulo.imagenArticulo.urlImagen);
+                datos.setearParametro("@DescripcionM ", articulo.marca.descripcion);
+                datos.setearParametro("@DescripcionC ", articulo.categoria.descripcion);
+
+                datos.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+
+        }
+
 
         public void eliminar(int id)
         {

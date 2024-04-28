@@ -174,6 +174,18 @@ namespace TPWindowsFormsProgramacionIII
                 
             }
         }
+
+        private void buttonModificar_Click(object sender, EventArgs e)
+        {
+            //LE PASO POR PARAMENTRO EL OBJETO ARTICULO QUE QUIERO MODIFAR, A LA VENTANA O FRM
+
+            Articulo seleccionado;
+            seleccionado = (Articulo)gdvListadoDeArticulos.CurrentRow.DataBoundItem;
+
+            VentanaAgregarArticulo modificar = new VentanaAgregarArticulo(seleccionado);
+            modificar.ShowDialog();
+            cargar(); //Para que puede mostrar en la grilla nuevamente lo cargado
+        }
     }
 
 }
