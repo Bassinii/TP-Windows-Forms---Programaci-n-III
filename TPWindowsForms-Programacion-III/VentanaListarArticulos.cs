@@ -16,6 +16,7 @@ namespace TPWindowsFormsProgramacionIII
     public partial class VentanaListarArticulos : Form
     {   
         private List<Articulo> listaArticulos;
+        List<Categoria> categorias;
         public VentanaListarArticulos()
         {
             InitializeComponent();
@@ -38,6 +39,16 @@ namespace TPWindowsFormsProgramacionIII
         private void ListarArticulos_Load(object sender, EventArgs e)
         {
             cargar(); //Se pasa dentro del metodo cargar
+            NegocioCategoria negocioCategoria = new NegocioCategoria();
+            categorias = negocioCategoria.listar();
+            foreach (Categoria categoria in categorias)
+            {
+                comboBoxCategoria.Items.Add(categoria);
+            }
+
+            comboBoxPrecio.Items.Add("Mayor a");
+            comboBoxPrecio.Items.Add("Menor a");
+            comboBoxPrecio.Items.Add("Igual a");
         }
 
             private void gdvListadoDeArticulos_SelectionChanged(object sender, EventArgs e) 
@@ -118,7 +129,50 @@ namespace TPWindowsFormsProgramacionIII
 
         private void buttonEliminar_Click_1(object sender, EventArgs e)
         {
+            NegocioArticulo baja = new NegocioArticulo();
+            Articulo seleccionado;
+            try
+            {
+                seleccionado = (Articulo)gdvListadoDeArticulos.CurrentRow.DataBoundItem;
+                baja.eliminar(seleccionado.id);
+                cargar();
+            }
+            catch (Exception ex)
+            {
 
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void comboBoxCategoria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxPrecio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //comboBoxPrecio.Items.Clear();
+            /*comboBoxPrecio.Items.Add("Mayor a $");
+            comboBoxPrecio.Items.Add("Menor a $");
+            comboBoxPrecio.Items.Add("Igual a $");*/
+        }
+        //busqueda por filtros
+        private void buttonBuscar_Click(object sender, EventArgs e)
+        {
+            NegocioArticulo negocio = new NegocioArticulo();
+            try
+            {
+                string categoria = comboBoxCategoria.SelectedItem.ToString();
+                string precio = comboBoxPrecio.SelectedItem.ToString();
+                string filtro = textBoxFiltro.Text;
+                gdvListadoDeArticulos.DataSource = negocio.filtrar(categoria, precio, filtro);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                
+            }
         }
     }
 
