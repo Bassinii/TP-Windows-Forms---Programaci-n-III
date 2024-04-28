@@ -41,13 +41,14 @@
             // 
             // gdvListadoDeArticulos
             // 
+            this.gdvListadoDeArticulos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gdvListadoDeArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gdvListadoDeArticulos.Location = new System.Drawing.Point(4, 58);
             this.gdvListadoDeArticulos.Margin = new System.Windows.Forms.Padding(2);
             this.gdvListadoDeArticulos.Name = "gdvListadoDeArticulos";
             this.gdvListadoDeArticulos.RowHeadersWidth = 51;
             this.gdvListadoDeArticulos.RowTemplate.Height = 24;
-            this.gdvListadoDeArticulos.Size = new System.Drawing.Size(745, 377);
+            this.gdvListadoDeArticulos.Size = new System.Drawing.Size(751, 289);
             this.gdvListadoDeArticulos.TabIndex = 0;
             this.gdvListadoDeArticulos.SelectionChanged += new System.EventHandler(this.gdvListadoDeArticulos_SelectionChanged);
             // 
@@ -62,9 +63,10 @@
             // 
             // buttonAgregar
             // 
-            this.buttonAgregar.Location = new System.Drawing.Point(815, 484);
+            this.buttonAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAgregar.Location = new System.Drawing.Point(800, 411);
             this.buttonAgregar.Name = "buttonAgregar";
-            this.buttonAgregar.Size = new System.Drawing.Size(214, 25);
+            this.buttonAgregar.Size = new System.Drawing.Size(227, 75);
             this.buttonAgregar.TabIndex = 4;
             this.buttonAgregar.Text = "Agregar";
             this.buttonAgregar.UseVisualStyleBackColor = true;
@@ -72,27 +74,31 @@
             // 
             // buttonModificar
             // 
-            this.buttonModificar.Location = new System.Drawing.Point(553, 484);
+            this.buttonModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonModificar.Location = new System.Drawing.Point(543, 438);
             this.buttonModificar.Name = "buttonModificar";
-            this.buttonModificar.Size = new System.Drawing.Size(214, 25);
+            this.buttonModificar.Size = new System.Drawing.Size(228, 48);
             this.buttonModificar.TabIndex = 3;
             this.buttonModificar.Text = "Modificar";
             this.buttonModificar.UseVisualStyleBackColor = true;
             // 
             // buttonEliminar
             // 
-            this.buttonEliminar.Location = new System.Drawing.Point(295, 486);
+            this.buttonEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonEliminar.Location = new System.Drawing.Point(302, 438);
             this.buttonEliminar.Name = "buttonEliminar";
-            this.buttonEliminar.Size = new System.Drawing.Size(214, 23);
+            this.buttonEliminar.Size = new System.Drawing.Size(217, 48);
             this.buttonEliminar.TabIndex = 2;
             this.buttonEliminar.Text = "Eliminar";
             this.buttonEliminar.UseVisualStyleBackColor = true;
+            this.buttonEliminar.Click += new System.EventHandler(this.buttonEliminar_Click_1);
             // 
             // buttonAtras
             // 
-            this.buttonAtras.Location = new System.Drawing.Point(35, 486);
+            this.buttonAtras.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAtras.Location = new System.Drawing.Point(42, 438);
             this.buttonAtras.Name = "buttonAtras";
-            this.buttonAtras.Size = new System.Drawing.Size(214, 23);
+            this.buttonAtras.Size = new System.Drawing.Size(216, 48);
             this.buttonAtras.TabIndex = 1;
             this.buttonAtras.Text = "Atras";
             this.buttonAtras.UseVisualStyleBackColor = true;
@@ -102,6 +108,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1051, 521);
             this.Controls.Add(this.buttonAtras);
             this.Controls.Add(this.buttonEliminar);
@@ -111,7 +118,9 @@
             this.Controls.Add(this.gdvListadoDeArticulos);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.MaximumSize = new System.Drawing.Size(1067, 560);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(1400, 565);
+            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(1067, 560);
             this.Name = "VentanaListarArticulos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

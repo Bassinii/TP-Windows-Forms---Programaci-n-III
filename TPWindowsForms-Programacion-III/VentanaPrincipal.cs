@@ -21,14 +21,24 @@ namespace TPWindowsFormsProgramacionIII
 
         private void listaToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            foreach (var item in Application.OpenForms)
+            {
+                if(item.GetType() == typeof(VentanaListarArticulos)){ return; }
+                        
+
+            }
             VentanaListarArticulos Lista = new VentanaListarArticulos();
+            Lista.MdiParent = this;
+           
             Lista.Show();
         }
 
         private void agregarArticulosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             VentanaAgregarArticulo Alta = new VentanaAgregarArticulo();
+            
             Alta.Show();
+           
         }
     }
 }

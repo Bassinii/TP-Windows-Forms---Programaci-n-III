@@ -89,6 +89,7 @@ namespace TPWindowsFormsProgramacionIII
         private void buttonAgregar_Click(object sender, EventArgs e)
         {
             VentanaAgregarArticulo alta = new VentanaAgregarArticulo();
+           
             alta.ShowDialog();
             cargar(); //Para que puede mostrar en la grilla nuevamente lo cargado
         }
@@ -113,6 +114,11 @@ namespace TPWindowsFormsProgramacionIII
 
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void buttonEliminar_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 
