@@ -15,9 +15,9 @@ namespace Negocio
         private SqlCommand comando;
         private SqlDataReader lector;
         public SqlDataReader Lector
-            {
-                get { return lector; }
-            }
+        {
+            get { return lector; }
+        }
 
         public AccesoDatos()
         {
@@ -40,14 +40,14 @@ namespace Negocio
             {
                 conexion.Open();
                 lector = comando.ExecuteReader();
-            
+
             }
             catch (Exception ex)
             {
 
                 throw ex;
             }
-            
+
         }
 
         public void ejecutarAccion()
@@ -77,5 +77,23 @@ namespace Negocio
         }
 
 
+
+
+        public object ejecutarScalar()
+        {
+            try
+            {
+                conexion.Open();
+                return comando.ExecuteScalar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                CerrarConexion();
+            }
+        }
     }
 }

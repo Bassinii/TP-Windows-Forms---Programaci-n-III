@@ -38,7 +38,7 @@ namespace TPWindowsFormsProgramacionIII
             }
             foreach (Categoria categoria in categorias)
             {
-                cboCategoria.Items.Add(categoria);
+                comboBoxCat2.Items.Add(categoria);
             }
         }
 
@@ -59,11 +59,12 @@ namespace TPWindowsFormsProgramacionIII
                 arti.precio = float.Parse(textBoxPrecio.Text);
                 arti.imagenArticulo = new Imagenes { urlImagen = textBoxUrlImagen.Text };
                 //SELECCION DE MARCA
+               
                 Marca marcaSeleccionada = (Marca)cboMarca.SelectedItem;
                 arti.marca.descripcion = marcaSeleccionada.descripcion;
                 arti.marca.id = marcaSeleccionada.id;
                 //SELECCION CATEGORIA
-                Categoria categoriaSeleccionada = (Categoria)cboCategoria.SelectedItem;
+                Categoria categoriaSeleccionada = (Categoria)comboBoxCat2.SelectedItem;
                 arti.categoria.descripcion = categoriaSeleccionada.descripcion;
                 arti.categoria.id = categoriaSeleccionada.id;
 
@@ -82,5 +83,7 @@ namespace TPWindowsFormsProgramacionIII
                 Close();
             }
         }
+
+        
     }
 }

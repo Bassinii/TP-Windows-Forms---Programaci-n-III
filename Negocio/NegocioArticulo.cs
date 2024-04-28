@@ -8,6 +8,7 @@ using ClasesDeDominio;
 using System.Windows.Forms;
 using System.Data;
 using System.Drawing;
+using System.Data.SqlClient;
 
 namespace Negocio
 {
@@ -138,27 +139,22 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
+                //datos.setearConsulta("SELECT MAX(Id) FROM ARTICULOS");
+                datos.setearConsulta("SELECT IDENT_CURRENT('ARTICULOS')");
+                datos.ejecutarAccion();
+
+                int idArticulo = 1 + Convert.ToInt32(datos.ejecutarScalar());
                 // Paso 1: Insertar el artículo en la tabla ARTICULOS
-                datos.setearConsulta("INSERT INTO ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio) VALUES ('" + aux.codigo + "', '" + aux.nombre + "', '" + aux.descripcion + "', " + aux.marca.id + ", " + aux.categoria.id + ", " + aux.precio + ")");
+                datos.setearConsulta("INSERT INTO ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio) VALUES ('" + aux.codigo + "', '" + aux.nombre + "', '" + aux.descripcion + "', " + aux.marca.id + ", " + aux.categoria.id + ", " + aux.precio + ");SELECT SCOPE_IDENTITY(); INSERT INTO IMAGENES (ImagenUrl, IdArticulo) VALUES ('" + urlImagen + "', " + idArticulo + ")");
                 datos.ejecutarAccion();
-                datos.CerrarConexion();
+                
 
-                /* Paso 2: Obtener el ID autonumérico del artículo recién insertado
-                datos.setearConsulta("SELECT SCOPE_IDENTITY()");
-                datos.ejecutarLectura();
-                int idArticulo = 0;
-                if (datos.Lector.Read())
-                {
-                    idArticulo = Convert.ToInt32(datos.Lector[0]);
-                }
-                datos.Lector.Close();
-                datos.CerrarConexion();
-                */
-
-                // Paso 3: Insertar la URL de la imagen junto con el ID del artículo en la tabla IMAGENES
-                datos.setearConsulta("INSERT INTO IMAGENES (ImagenUrl, IdArticulo) VALUES ('" + urlImagen + "', " + 3 + ")");
-                datos.ejecutarAccion();
-                datos.CerrarConexion();
+                
+               
+               // datos.setearConsulta("INSERT INTO IMAGENES (ImagenUrl, IdArticulo) VALUES ('" + urlImagen + "', " + idArticulo + ")");
+                //datos.ejecutarAccion();
+               // agregarImagen(idArticulo, urlImagen);
+                
             }
             catch (Exception ex)
             {
@@ -185,6 +181,24 @@ namespace Negocio
                 throw ex;
             }
         }
-
+        /*private void agregarImagen(int idArticulo, string urlImagen)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("INSERT INTO IMAGENES (ImagenUrl, IdArticulo) VALUES ('" + urlImagen + "', " + idArticulo + ")");
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
+        */
     }
 }      

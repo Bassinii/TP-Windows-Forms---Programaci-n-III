@@ -45,7 +45,7 @@ namespace TPWindowsFormsProgramacionIII
             this.labelUrlImagen = new System.Windows.Forms.Label();
             this.textBoxUrlImagen = new System.Windows.Forms.TextBox();
             this.cboMarca = new System.Windows.Forms.ComboBox();
-            this.cboCategoria = new System.Windows.Forms.ComboBox();
+            this.comboBoxCat2 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // labelNombre
@@ -174,20 +174,21 @@ namespace TPWindowsFormsProgramacionIII
             this.cboMarca.Size = new System.Drawing.Size(130, 21);
             this.cboMarca.TabIndex = 3;
             // 
-            // cboCategoria
+            // comboBoxCat2
             // 
-            this.cboCategoria.FormattingEnabled = true;
-            this.cboCategoria.Location = new System.Drawing.Point(154, 185);
-            this.cboCategoria.Name = "cboCategoria";
-            this.cboCategoria.Size = new System.Drawing.Size(130, 21);
-            this.cboCategoria.TabIndex = 4;
+            this.comboBoxCat2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxCat2.FormattingEnabled = true;
+            this.comboBoxCat2.Location = new System.Drawing.Point(153, 188);
+            this.comboBoxCat2.Name = "comboBoxCat2";
+            this.comboBoxCat2.Size = new System.Drawing.Size(130, 21);
+            this.comboBoxCat2.TabIndex = 16;
             // 
             // VentanaAgregarArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(354, 451);
-            this.Controls.Add(this.cboCategoria);
+            this.Controls.Add(this.comboBoxCat2);
             this.Controls.Add(this.cboMarca);
             this.Controls.Add(this.textBoxUrlImagen);
             this.Controls.Add(this.labelUrlImagen);
@@ -231,6 +232,6 @@ namespace TPWindowsFormsProgramacionIII
         private System.Windows.Forms.Label labelUrlImagen;
         private System.Windows.Forms.TextBox textBoxUrlImagen;
         private System.Windows.Forms.ComboBox cboMarca;
-        private System.Windows.Forms.ComboBox cboCategoria;
+        private System.Windows.Forms.ComboBox comboBoxCat2;
     }
 }
