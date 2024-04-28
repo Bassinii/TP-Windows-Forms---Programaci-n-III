@@ -52,8 +52,9 @@ namespace Negocio
                     {
                         // Si la categoría es NULL en la base de datos, asigna un valor predeterminado o un mensaje alternativo.
                         categoria = "Sin categoría";
+                        aux.categoria = new Categoria { descripcion = categoria };
                     }
-                    aux.categoria = new Categoria { descripcion = categoria };
+                    
                     aux.precio = (float)datosArticulo.Lector.GetDecimal(6);
                     //corregimos para que acepte las imagenes 
                     if (!(datosArticulo.Lector["ImagenUrl"] is DBNull))
