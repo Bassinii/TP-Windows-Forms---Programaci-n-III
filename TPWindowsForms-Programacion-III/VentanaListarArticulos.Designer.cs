@@ -43,11 +43,14 @@
             // 
             this.gdvListadoDeArticulos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gdvListadoDeArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gdvListadoDeArticulos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.gdvListadoDeArticulos.Location = new System.Drawing.Point(4, 58);
             this.gdvListadoDeArticulos.Margin = new System.Windows.Forms.Padding(2);
+            this.gdvListadoDeArticulos.MultiSelect = false;
             this.gdvListadoDeArticulos.Name = "gdvListadoDeArticulos";
             this.gdvListadoDeArticulos.RowHeadersWidth = 51;
             this.gdvListadoDeArticulos.RowTemplate.Height = 24;
+            this.gdvListadoDeArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gdvListadoDeArticulos.Size = new System.Drawing.Size(751, 289);
             this.gdvListadoDeArticulos.TabIndex = 0;
             this.gdvListadoDeArticulos.SelectionChanged += new System.EventHandler(this.gdvListadoDeArticulos_SelectionChanged);

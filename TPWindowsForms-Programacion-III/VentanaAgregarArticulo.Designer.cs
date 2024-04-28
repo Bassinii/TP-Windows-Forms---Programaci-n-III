@@ -46,6 +46,8 @@ namespace TPWindowsFormsProgramacionIII
             this.textBoxUrlImagen = new System.Windows.Forms.TextBox();
             this.cboMarca = new System.Windows.Forms.ComboBox();
             this.comboBoxCat2 = new System.Windows.Forms.ComboBox();
+            this.pictureBoxAgregar = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAgregar)).BeginInit();
             this.SuspendLayout();
             // 
             // labelNombre
@@ -82,9 +84,10 @@ namespace TPWindowsFormsProgramacionIII
             // 
             // buttonAceptar
             // 
-            this.buttonAceptar.Location = new System.Drawing.Point(191, 365);
+            this.buttonAceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAceptar.Location = new System.Drawing.Point(363, 353);
             this.buttonAceptar.Name = "buttonAceptar";
-            this.buttonAceptar.Size = new System.Drawing.Size(149, 34);
+            this.buttonAceptar.Size = new System.Drawing.Size(159, 44);
             this.buttonAceptar.TabIndex = 8;
             this.buttonAceptar.Text = "Aceptar";
             this.buttonAceptar.UseVisualStyleBackColor = true;
@@ -92,9 +95,10 @@ namespace TPWindowsFormsProgramacionIII
             // 
             // buttonCancelar
             // 
-            this.buttonCancelar.Location = new System.Drawing.Point(24, 365);
+            this.buttonCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCancelar.Location = new System.Drawing.Point(183, 353);
             this.buttonCancelar.Name = "buttonCancelar";
-            this.buttonCancelar.Size = new System.Drawing.Size(149, 34);
+            this.buttonCancelar.Size = new System.Drawing.Size(157, 44);
             this.buttonCancelar.TabIndex = 7;
             this.buttonCancelar.Text = "Cancelar";
             this.buttonCancelar.UseVisualStyleBackColor = true;
@@ -165,6 +169,7 @@ namespace TPWindowsFormsProgramacionIII
             this.textBoxUrlImagen.Name = "textBoxUrlImagen";
             this.textBoxUrlImagen.Size = new System.Drawing.Size(187, 20);
             this.textBoxUrlImagen.TabIndex = 6;
+            this.textBoxUrlImagen.Leave += new System.EventHandler(this.textBoxUrlImagen_Leave);
             // 
             // cboMarca
             // 
@@ -183,11 +188,22 @@ namespace TPWindowsFormsProgramacionIII
             this.comboBoxCat2.Size = new System.Drawing.Size(130, 21);
             this.comboBoxCat2.TabIndex = 16;
             // 
+            // pictureBoxAgregar
+            // 
+            this.pictureBoxAgregar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBoxAgregar.Location = new System.Drawing.Point(394, 27);
+            this.pictureBoxAgregar.Name = "pictureBoxAgregar";
+            this.pictureBoxAgregar.Size = new System.Drawing.Size(280, 253);
+            this.pictureBoxAgregar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxAgregar.TabIndex = 17;
+            this.pictureBoxAgregar.TabStop = false;
+            // 
             // VentanaAgregarArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(354, 451);
+            this.ClientSize = new System.Drawing.Size(701, 451);
+            this.Controls.Add(this.pictureBoxAgregar);
             this.Controls.Add(this.comboBoxCat2);
             this.Controls.Add(this.cboMarca);
             this.Controls.Add(this.textBoxUrlImagen);
@@ -209,6 +225,7 @@ namespace TPWindowsFormsProgramacionIII
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agregar Articulo";
             this.Load += new System.EventHandler(this.VentanaAgregarArticulo_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAgregar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -233,5 +250,6 @@ namespace TPWindowsFormsProgramacionIII
         private System.Windows.Forms.TextBox textBoxUrlImagen;
         private System.Windows.Forms.ComboBox cboMarca;
         private System.Windows.Forms.ComboBox comboBoxCat2;
+        private System.Windows.Forms.PictureBox pictureBoxAgregar;
     }
 }

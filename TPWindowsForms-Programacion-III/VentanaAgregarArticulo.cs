@@ -84,6 +84,23 @@ namespace TPWindowsFormsProgramacionIII
             }
         }
 
-        
+        private void textBoxUrlImagen_Leave(object sender, EventArgs e)
+        {
+            cargarImagen(textBoxUrlImagen.Text);
+        }
+
+        private void cargarImagen(string imagen)
+        {
+            try
+            {
+                pictureBoxAgregar.Load(imagen);
+            }
+            catch (Exception)
+            {
+                pictureBoxAgregar.Load("https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg");
+
+            }
+
+        }
     }
 }
