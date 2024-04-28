@@ -181,24 +181,136 @@ namespace Negocio
                 throw ex;
             }
         }
-        /*private void agregarImagen(int idArticulo, string urlImagen)
+        //creamos metodo filtrar
+        public List<Articulo> filtrar(string categoria, string precio, string filtro)
         {
+            List<Articulo> lista = new List<Articulo>();
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("INSERT INTO IMAGENES (ImagenUrl, IdArticulo) VALUES ('" + urlImagen + "', " + idArticulo + ")");
-                datos.ejecutarAccion();
+                string consulta = "SELECT A.Id, A.Codigo, A.Nombre, A.Descripcion, M.Descripcion AS Marca, C.Descripcion AS Categoria, A.Precio, I.ImagenUrl FROM Articulos A LEFT JOIN Categorias C ON A.IdCategoria = C.Id LEFT JOIN Marcas M ON A.IdMarca = M.Id LEFT JOIN IMAGENES I ON A.Id = I.IdArticulo where ";
+                if(categoria == "Celulares")
+                {
+                    switch (precio)
+                    {
+                        case "Mayor a":
+                            consulta += "A.Precio > " + filtro + "and c.Descripcion = 'Celulares'";
+                            break;
+                        case "Menor a":
+                            consulta += "A.Precio < " + filtro + "and c.Descripcion = 'Celulares'";
+                            break;
+                        default:
+                            consulta += "A.Precio = " + filtro + "and c.Descripcion = 'Celulares'";
+                            break;
+                    }
+                }
+                else if(categoria == "Televisores")
+                {
+                    switch (precio)
+                    {
+                        case "Mayor a":
+                            consulta += "A.Precio > " + filtro + "and c.Descripcion = 'Televisores'";
+                            break;
+                        case "Menor a":
+                            consulta += "A.Precio < " + filtro + "and c.Descripcion = 'Televisores'";
+                            break;
+                        default:
+                            consulta += "A.Precio = " + filtro + "and c.Descripcion = 'Televisores'";
+                            break;
+                    }
+
+                }
+                else if (categoria == "Media")
+                {
+                    switch (precio)
+                    {
+                        case "Mayor a":
+                            consulta += "A.Precio > " + filtro + "and c.Descripcion = 'Media'";
+                            break;
+                        case "Menor a":
+                            consulta += "A.Precio < " + filtro + "and c.Descripcion = 'Media'";
+                            break;
+                        default:
+                            consulta += "A.Precio = " + filtro + "and c.Descripcion = 'Media'";
+                            break;
+                    }
+
+                }
+                else 
+                {
+                    switch (precio)
+                    {
+                        case "Mayor a":
+                            consulta += "A.Precio > " + filtro + "and c.Descripcion = 'Audio'";
+                            break;
+                        case "Menor a":
+                            consulta += "A.Precio < " + filtro + "and c.Descripcion = 'Audio'";
+                            break;
+                        default:
+                            consulta += "A.Precio = " + filtro + "and c.Descripcion = 'Audio'";
+                            break;
+                    }
+
+                }
+
+
+                datos.setearConsulta(consulta);
+                datos.ejecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    Articulo aux = new Articulo();
+                    aux.id = datos.Lector.GetInt32(0);
+                    aux.codigo = (string)datos.Lector["Codigo"];
+                    aux.nombre = (string)datos.Lector["Nombre"];
+                    aux.descripcion = (string)datos.Lector["Descripcion"];
+                    //aux.marca = new Marca { id = int.Parse(textbox) };
+                    //aux.categoria = new Categoria { descripcion = (string)datosArticulo.Lector["Categoria"] };
+                    aux.marca = new Marca { descripcion = (string)datos.Lector["Marca"] };
+                    string categori = string.Empty;
+                    if (!datos.Lector.IsDBNull(datos.Lector.GetOrdinal("Categoria")))
+                    {
+                        categori = (string)datos.Lector["Categoria"];
+                    }
+                    else
+                    {
+                        // Si la categoría es NULL en la base de datos, asigna un valor predeterminado o un mensaje alternativo.
+                        categori = "Sin categoría";
+                    }
+                    aux.categoria = new Categoria { descripcion = categori };
+                    aux.precio = (float)datos.Lector.GetDecimal(6);
+                    //corregimos para que acepte las imagenes 
+                    if (!(datos.Lector["ImagenUrl"] is DBNull))
+                        aux.imagenArticulo = new Imagenes { urlImagen = (string)datos.Lector["ImagenUrl"] };
+
+
+                    lista.Add(aux);
+                }
+                return lista;
             }
-            catch (Exception ex)
+            catch (Exception ex )
             {
-                MessageBox.Show(ex.ToString());
+
                 throw ex;
             }
-            finally
-            {
-                datos.CerrarConexion();
-            }
         }
-        */
+        /*private void agregarImagen(int idArticulo, string urlImagen)
+{
+   AccesoDatos datos = new AccesoDatos();
+   try
+   {
+       datos.setearConsulta("INSERT INTO IMAGENES (ImagenUrl, IdArticulo) VALUES ('" + urlImagen + "', " + idArticulo + ")");
+       datos.ejecutarAccion();
+   }
+   catch (Exception ex)
+   {
+       MessageBox.Show(ex.ToString());
+       throw ex;
+   }
+   finally
+   {
+       datos.CerrarConexion();
+   }
+}
+*/
     }
 }      
