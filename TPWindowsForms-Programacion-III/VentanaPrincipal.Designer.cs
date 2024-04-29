@@ -35,8 +35,6 @@
             this.iconMenuItem5 = new FontAwesome.Sharp.IconMenuItem();
             this.listaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.agregarArticulosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.modificarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,9 +60,9 @@
             this.label1.Location = new System.Drawing.Point(34, 15);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(173, 31);
+            this.label1.Size = new System.Drawing.Size(395, 31);
             this.label1.TabIndex = 1;
-            this.label1.Text = "CATALOGO";
+            this.label1.Text = "CATÁLOGO DE ARTÍCULOS";
             // 
             // menuStrip2
             // 
@@ -83,44 +81,30 @@
             this.iconMenuItem5.AutoSize = false;
             this.iconMenuItem5.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.listaToolStripMenuItem,
-            this.agregarArticulosToolStripMenuItem,
-            this.modificarToolStripMenuItem,
-            this.eliminarToolStripMenuItem});
+            this.agregarArticulosToolStripMenuItem});
             this.iconMenuItem5.IconChar = FontAwesome.Sharp.IconChar.Dolly;
             this.iconMenuItem5.IconColor = System.Drawing.Color.Black;
             this.iconMenuItem5.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconMenuItem5.IconSize = 50;
             this.iconMenuItem5.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.iconMenuItem5.Name = "iconMenuItem5";
-            this.iconMenuItem5.Size = new System.Drawing.Size(152, 74);
-            this.iconMenuItem5.Text = "Articulos";
-            this.iconMenuItem5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.iconMenuItem5.Size = new System.Drawing.Size(250, 74);
+            this.iconMenuItem5.Text = "Gestionar Articulos";
+            this.iconMenuItem5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // listaToolStripMenuItem
             // 
             this.listaToolStripMenuItem.Name = "listaToolStripMenuItem";
-            this.listaToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
-            this.listaToolStripMenuItem.Text = "Lista";
+            this.listaToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.listaToolStripMenuItem.Text = "Ver lista de Articulos";
             this.listaToolStripMenuItem.Click += new System.EventHandler(this.listaToolStripMenuItem_Click);
             // 
             // agregarArticulosToolStripMenuItem
             // 
             this.agregarArticulosToolStripMenuItem.Name = "agregarArticulosToolStripMenuItem";
-            this.agregarArticulosToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.agregarArticulosToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
             this.agregarArticulosToolStripMenuItem.Text = "Agregar Articulos";
             this.agregarArticulosToolStripMenuItem.Click += new System.EventHandler(this.agregarArticulosToolStripMenuItem_Click);
-            // 
-            // modificarToolStripMenuItem
-            // 
-            this.modificarToolStripMenuItem.Name = "modificarToolStripMenuItem";
-            this.modificarToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
-            this.modificarToolStripMenuItem.Text = "Modificar";
-            // 
-            // eliminarToolStripMenuItem
-            // 
-            this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
-            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
-            this.eliminarToolStripMenuItem.Text = "Eliminar";
             // 
             // VentanaPrincipal
             // 
@@ -153,8 +137,6 @@
         private FontAwesome.Sharp.IconMenuItem iconMenuItem5;
         private System.Windows.Forms.ToolStripMenuItem listaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem agregarArticulosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem modificarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem eliminarToolStripMenuItem;
     }
 }
 
