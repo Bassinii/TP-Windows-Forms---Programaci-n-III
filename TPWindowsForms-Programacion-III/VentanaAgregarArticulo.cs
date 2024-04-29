@@ -45,12 +45,12 @@ namespace TPWindowsFormsProgramacionIII
             }
             foreach (Categoria categoria in categorias)
             {
-                comboBoxCat2.Items.Add(categoria);
+                cboCategoria.Items.Add(categoria);
             }
             cboMarca.ValueMember = "Id";
             cboMarca.DisplayMember = "Descripcion";
-            comboBoxCat2.ValueMember = "Id";
-            comboBoxCat2.DisplayMember = "Descripcion";
+            cboCategoria.ValueMember = "Id";
+            cboCategoria.DisplayMember = "Descripcion";
 
             if (articulo != null)
             {
@@ -60,8 +60,8 @@ namespace TPWindowsFormsProgramacionIII
                 textBoxPrecio.Text = articulo.precio.ToString();
                 textBoxUrlImagen.Text = articulo.imagenArticulo.urlImagen;
                 cargarImagen(articulo.imagenArticulo.urlImagen);
-                cboMarca.SelectedValue = articulo.marca.id;
-                comboBoxCat2.SelectedValue = articulo.categoria.id;
+                cboMarca.SelectedItem = articulo.marca;
+                cboCategoria.SelectedItem = articulo.categoria;
             }
 
         }
@@ -69,6 +69,72 @@ namespace TPWindowsFormsProgramacionIII
         private void buttonCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private bool validarAceptar()
+        {
+            if (string.IsNullOrEmpty(textBoxNombre.Text))
+            {
+                MessageBox.Show("Escribe un Nombre.");
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(textBoxCodigo.Text))
+            {
+                MessageBox.Show("Escribe un Codigo.");
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(textBoxDescripcion.Text))
+            {
+                MessageBox.Show("Escribe una Descripcion.");
+                return false;
+            }
+
+            if (cboMarca.SelectedIndex < 0)
+            {
+                MessageBox.Show("Seleccione una Marca.");
+                return false;
+            }
+
+            if (cboCategoria.SelectedIndex < 0)
+            {
+                MessageBox.Show("Seleccione una Categoria.");
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(textBoxPrecio.Text))
+            {
+                MessageBox.Show("Escribe un Precio.");
+                return false;
+            }
+
+            if (!(soloNumeros(textBoxPrecio.Text)))
+            {
+                MessageBox.Show("El campo Precio solo acepta numeros.");
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(textBoxUrlImagen.Text))
+            {
+                MessageBox.Show("Escribe una URL.");
+                return false;
+            }
+
+            return true;
+        }
+
+        private bool soloNumeros(string text)
+        {
+            foreach (char caracter in text)
+            {
+                if (!(char.IsNumber(caracter)))
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         private void buttonAceptar_Click(object sender, EventArgs e)
@@ -79,47 +145,52 @@ namespace TPWindowsFormsProgramacionIII
             {
                 articulo = new Articulo();
             }
-            try
-            {
-                articulo.nombre = textBoxNombre.Text;
-                articulo.descripcion = textBoxDescripcion.Text;
-                articulo.codigo = textBoxCodigo.Text;
-                articulo.precio = float.Parse(textBoxPrecio.Text);
-                articulo.imagenArticulo = new Imagenes { urlImagen = textBoxUrlImagen.Text };
-                //SELECCION DE MARCA
-               
-                Marca marcaSeleccionada = (Marca)cboMarca.SelectedItem;
-                articulo.marca.descripcion = marcaSeleccionada.descripcion;
-                articulo.marca.id = marcaSeleccionada.id;
-                //SELECCION CATEGORIA
-                Categoria categoriaSeleccionada = (Categoria)comboBoxCat2.SelectedItem;
-                articulo.categoria.descripcion = categoriaSeleccionada.descripcion;
-                articulo.categoria.id = categoriaSeleccionada.id;
 
-                if (articulo.id != 0)
+            if (validarAceptar())
+            {
+                try
+                {
+                    articulo.nombre = textBoxNombre.Text;
+                    articulo.descripcion = textBoxDescripcion.Text;
+                    articulo.codigo = textBoxCodigo.Text;
+                    articulo.precio = float.Parse(textBoxPrecio.Text);
+                    articulo.imagenArticulo = new Imagenes { urlImagen = textBoxUrlImagen.Text };
+                    //SELECCION DE MARCA
+
+                    Marca marcaSeleccionada = (Marca)cboMarca.SelectedItem;
+                    articulo.marca.descripcion = marcaSeleccionada.descripcion;
+                    articulo.marca.id = marcaSeleccionada.id;
+                    //SELECCION CATEGORIA
+                    Categoria categoriaSeleccionada = (Categoria)cboCategoria.SelectedItem;
+                    articulo.categoria.descripcion = categoriaSeleccionada.descripcion;
+                    articulo.categoria.id = categoriaSeleccionada.id;
+
+                    if (articulo.id != 0)
+                    {
+
+                        artiNeg.modificar(articulo);
+                        MessageBox.Show("Modificado correctamente");
+                    }
+                    else
+                    {
+                        artiNeg.agregar(articulo, articulo.imagenArticulo.urlImagen);
+                        MessageBox.Show("Agregado exitosamente");
+                    }
+
+                }
+                catch (Exception ex)
                 {
 
-                    artiNeg.modificar(articulo);
-                    MessageBox.Show("Modificado correctamente");
+                    MessageBox.Show(ex.ToString());
                 }
-                else
+                finally
                 {
-                    artiNeg.agregar(articulo, articulo.imagenArticulo.urlImagen);
-                    MessageBox.Show("Agregado exitosamente");
+                    Close();
                 }
-
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.ToString());
-            }
-            finally
-            {
-                Close();
             }
         }
 
+        //ESTA FUNCION TAMBIEN SE HACE CUANTO TEXTBOXURLIMAGEN CAMBIA
         private void textBoxUrlImagen_Leave(object sender, EventArgs e)
         {
             cargarImagen(textBoxUrlImagen.Text);

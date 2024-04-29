@@ -137,16 +137,19 @@ namespace TPWindowsFormsProgramacionIII
         {
             NegocioArticulo baja = new NegocioArticulo();
             Articulo seleccionado;
-            try
+            if (gdvListadoDeArticulos.CurrentRow != null)
             {
-                seleccionado = (Articulo)gdvListadoDeArticulos.CurrentRow.DataBoundItem;
-                baja.eliminar(seleccionado.id);
-                cargar();
-            }
-            catch (Exception ex)
-            {
+                try
+                {
+                    seleccionado = (Articulo)gdvListadoDeArticulos.CurrentRow.DataBoundItem;
+                    baja.eliminar(seleccionado.id);
+                    cargar();
+                }
+                catch (Exception ex)
+                {
 
-                MessageBox.Show(ex.ToString());
+                    MessageBox.Show(ex.ToString());
+                }
             }
         }
 
@@ -224,11 +227,13 @@ namespace TPWindowsFormsProgramacionIII
             //LE PASO POR PARAMENTRO EL OBJETO ARTICULO QUE QUIERO MODIFAR, A LA VENTANA O FRM
 
             Articulo seleccionado;
-            seleccionado = (Articulo)gdvListadoDeArticulos.CurrentRow.DataBoundItem;
-
-            VentanaAgregarArticulo modificar = new VentanaAgregarArticulo(seleccionado);
-            modificar.ShowDialog();
-            cargar(); //Para que puede mostrar en la grilla nuevamente lo cargado
+            if (gdvListadoDeArticulos.CurrentRow != null)
+            {
+                seleccionado = (Articulo)gdvListadoDeArticulos.CurrentRow.DataBoundItem; 
+                VentanaAgregarArticulo modificar = new VentanaAgregarArticulo(seleccionado);
+                modificar.ShowDialog();
+                cargar(); //Para que puede mostrar en la grilla nuevamente lo cargado
+            }
         }
         //buscar ya
         private void buttonBuscarR_Click(object sender, EventArgs e)

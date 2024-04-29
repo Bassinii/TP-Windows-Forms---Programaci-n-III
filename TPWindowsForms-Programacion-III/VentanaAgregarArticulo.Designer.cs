@@ -45,7 +45,7 @@ namespace TPWindowsFormsProgramacionIII
             this.labelUrlImagen = new System.Windows.Forms.Label();
             this.textBoxUrlImagen = new System.Windows.Forms.TextBox();
             this.cboMarca = new System.Windows.Forms.ComboBox();
-            this.comboBoxCat2 = new System.Windows.Forms.ComboBox();
+            this.cboCategoria = new System.Windows.Forms.ComboBox();
             this.pictureBoxAgregar = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAgregar)).BeginInit();
             this.SuspendLayout();
@@ -53,46 +53,41 @@ namespace TPWindowsFormsProgramacionIII
             // labelNombre
             // 
             this.labelNombre.AutoSize = true;
-            this.labelNombre.Location = new System.Drawing.Point(28, 37);
-            this.labelNombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelNombre.Location = new System.Drawing.Point(21, 30);
             this.labelNombre.Name = "labelNombre";
-            this.labelNombre.Size = new System.Drawing.Size(66, 16);
+            this.labelNombre.Size = new System.Drawing.Size(54, 13);
             this.labelNombre.TabIndex = 9;
             this.labelNombre.Text = "NOMBRE";
             // 
             // labelDescripcion
             // 
             this.labelDescripcion.AutoSize = true;
-            this.labelDescripcion.Location = new System.Drawing.Point(28, 137);
-            this.labelDescripcion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelDescripcion.Location = new System.Drawing.Point(21, 111);
             this.labelDescripcion.Name = "labelDescripcion";
-            this.labelDescripcion.Size = new System.Drawing.Size(98, 16);
+            this.labelDescripcion.Size = new System.Drawing.Size(80, 13);
             this.labelDescripcion.TabIndex = 11;
             this.labelDescripcion.Text = "DESCRIPCION";
             // 
             // textBoxNombre
             // 
-            this.textBoxNombre.Location = new System.Drawing.Point(205, 33);
-            this.textBoxNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxNombre.Location = new System.Drawing.Point(154, 27);
             this.textBoxNombre.Name = "textBoxNombre";
-            this.textBoxNombre.Size = new System.Drawing.Size(249, 22);
+            this.textBoxNombre.Size = new System.Drawing.Size(188, 20);
             this.textBoxNombre.TabIndex = 0;
             // 
             // textBoxDescripcion
             // 
-            this.textBoxDescripcion.Location = new System.Drawing.Point(205, 133);
-            this.textBoxDescripcion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxDescripcion.Location = new System.Drawing.Point(154, 108);
             this.textBoxDescripcion.Name = "textBoxDescripcion";
-            this.textBoxDescripcion.Size = new System.Drawing.Size(248, 22);
+            this.textBoxDescripcion.Size = new System.Drawing.Size(187, 20);
             this.textBoxDescripcion.TabIndex = 2;
             // 
             // buttonAceptar
             // 
             this.buttonAceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAceptar.Location = new System.Drawing.Point(484, 434);
-            this.buttonAceptar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonAceptar.Location = new System.Drawing.Point(363, 353);
             this.buttonAceptar.Name = "buttonAceptar";
-            this.buttonAceptar.Size = new System.Drawing.Size(212, 54);
+            this.buttonAceptar.Size = new System.Drawing.Size(159, 44);
             this.buttonAceptar.TabIndex = 8;
             this.buttonAceptar.Text = "Aceptar";
             this.buttonAceptar.UseVisualStyleBackColor = true;
@@ -101,10 +96,9 @@ namespace TPWindowsFormsProgramacionIII
             // buttonCancelar
             // 
             this.buttonCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonCancelar.Location = new System.Drawing.Point(244, 434);
-            this.buttonCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonCancelar.Location = new System.Drawing.Point(183, 353);
             this.buttonCancelar.Name = "buttonCancelar";
-            this.buttonCancelar.Size = new System.Drawing.Size(209, 54);
+            this.buttonCancelar.Size = new System.Drawing.Size(157, 44);
             this.buttonCancelar.TabIndex = 7;
             this.buttonCancelar.Text = "Cancelar";
             this.buttonCancelar.UseVisualStyleBackColor = true;
@@ -113,116 +107,106 @@ namespace TPWindowsFormsProgramacionIII
             // labelCodigo
             // 
             this.labelCodigo.AutoSize = true;
-            this.labelCodigo.Location = new System.Drawing.Point(28, 87);
-            this.labelCodigo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelCodigo.Location = new System.Drawing.Point(21, 71);
             this.labelCodigo.Name = "labelCodigo";
-            this.labelCodigo.Size = new System.Drawing.Size(59, 16);
+            this.labelCodigo.Size = new System.Drawing.Size(49, 13);
             this.labelCodigo.TabIndex = 10;
             this.labelCodigo.Text = "CODIGO";
             // 
             // labelIDMarca
             // 
             this.labelIDMarca.AutoSize = true;
-            this.labelIDMarca.Location = new System.Drawing.Point(28, 182);
-            this.labelIDMarca.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelIDMarca.Location = new System.Drawing.Point(21, 148);
             this.labelIDMarca.Name = "labelIDMarca";
-            this.labelIDMarca.Size = new System.Drawing.Size(55, 16);
+            this.labelIDMarca.Size = new System.Drawing.Size(45, 13);
             this.labelIDMarca.TabIndex = 12;
             this.labelIDMarca.Text = "MARCA";
             // 
             // labelIDCategoria
             // 
             this.labelIDCategoria.AutoSize = true;
-            this.labelIDCategoria.Location = new System.Drawing.Point(28, 231);
-            this.labelIDCategoria.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelIDCategoria.Location = new System.Drawing.Point(21, 188);
             this.labelIDCategoria.Name = "labelIDCategoria";
-            this.labelIDCategoria.Size = new System.Drawing.Size(85, 16);
+            this.labelIDCategoria.Size = new System.Drawing.Size(69, 13);
             this.labelIDCategoria.TabIndex = 13;
             this.labelIDCategoria.Text = "CATEGORIA";
             // 
             // labelPrecio
             // 
             this.labelPrecio.AutoSize = true;
-            this.labelPrecio.Location = new System.Drawing.Point(28, 277);
-            this.labelPrecio.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelPrecio.Location = new System.Drawing.Point(21, 225);
             this.labelPrecio.Name = "labelPrecio";
-            this.labelPrecio.Size = new System.Drawing.Size(57, 16);
+            this.labelPrecio.Size = new System.Drawing.Size(47, 13);
             this.labelPrecio.TabIndex = 14;
             this.labelPrecio.Text = "PRECIO";
             // 
             // textBoxCodigo
             // 
-            this.textBoxCodigo.Location = new System.Drawing.Point(205, 84);
-            this.textBoxCodigo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxCodigo.Location = new System.Drawing.Point(154, 68);
             this.textBoxCodigo.Name = "textBoxCodigo";
-            this.textBoxCodigo.Size = new System.Drawing.Size(249, 22);
+            this.textBoxCodigo.Size = new System.Drawing.Size(188, 20);
             this.textBoxCodigo.TabIndex = 1;
             // 
             // textBoxPrecio
             // 
-            this.textBoxPrecio.Location = new System.Drawing.Point(205, 273);
-            this.textBoxPrecio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxPrecio.Location = new System.Drawing.Point(154, 222);
             this.textBoxPrecio.Name = "textBoxPrecio";
-            this.textBoxPrecio.Size = new System.Drawing.Size(249, 22);
+            this.textBoxPrecio.Size = new System.Drawing.Size(188, 20);
             this.textBoxPrecio.TabIndex = 5;
             // 
             // labelUrlImagen
             // 
             this.labelUrlImagen.AutoSize = true;
-            this.labelUrlImagen.Location = new System.Drawing.Point(28, 324);
-            this.labelUrlImagen.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelUrlImagen.Location = new System.Drawing.Point(21, 263);
             this.labelUrlImagen.Name = "labelUrlImagen";
-            this.labelUrlImagen.Size = new System.Drawing.Size(89, 16);
+            this.labelUrlImagen.Size = new System.Drawing.Size(74, 13);
             this.labelUrlImagen.TabIndex = 15;
             this.labelUrlImagen.Text = "URL IMAGEN";
             // 
             // textBoxUrlImagen
             // 
-            this.textBoxUrlImagen.Location = new System.Drawing.Point(204, 320);
-            this.textBoxUrlImagen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxUrlImagen.Location = new System.Drawing.Point(153, 260);
             this.textBoxUrlImagen.Name = "textBoxUrlImagen";
-            this.textBoxUrlImagen.Size = new System.Drawing.Size(248, 22);
+            this.textBoxUrlImagen.Size = new System.Drawing.Size(187, 20);
             this.textBoxUrlImagen.TabIndex = 6;
+            this.textBoxUrlImagen.TextChanged += new System.EventHandler(this.textBoxUrlImagen_Leave);
             this.textBoxUrlImagen.Leave += new System.EventHandler(this.textBoxUrlImagen_Leave);
             // 
             // cboMarca
             // 
             this.cboMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMarca.FormattingEnabled = true;
-            this.cboMarca.Location = new System.Drawing.Point(204, 178);
-            this.cboMarca.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboMarca.Location = new System.Drawing.Point(153, 145);
             this.cboMarca.Name = "cboMarca";
-            this.cboMarca.Size = new System.Drawing.Size(172, 24);
+            this.cboMarca.Size = new System.Drawing.Size(130, 21);
             this.cboMarca.TabIndex = 3;
             // 
-            // comboBoxCat2
+            // cboCategoria
             // 
-            this.comboBoxCat2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxCat2.FormattingEnabled = true;
-            this.comboBoxCat2.Location = new System.Drawing.Point(204, 231);
-            this.comboBoxCat2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.comboBoxCat2.Name = "comboBoxCat2";
-            this.comboBoxCat2.Size = new System.Drawing.Size(172, 24);
-            this.comboBoxCat2.TabIndex = 16;
+            this.cboCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCategoria.FormattingEnabled = true;
+            this.cboCategoria.Location = new System.Drawing.Point(153, 188);
+            this.cboCategoria.Name = "cboCategoria";
+            this.cboCategoria.Size = new System.Drawing.Size(130, 21);
+            this.cboCategoria.TabIndex = 16;
             // 
             // pictureBoxAgregar
             // 
             this.pictureBoxAgregar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxAgregar.Location = new System.Drawing.Point(525, 33);
-            this.pictureBoxAgregar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBoxAgregar.Location = new System.Drawing.Point(394, 27);
             this.pictureBoxAgregar.Name = "pictureBoxAgregar";
-            this.pictureBoxAgregar.Size = new System.Drawing.Size(373, 311);
+            this.pictureBoxAgregar.Size = new System.Drawing.Size(280, 253);
             this.pictureBoxAgregar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxAgregar.TabIndex = 17;
             this.pictureBoxAgregar.TabStop = false;
             // 
             // VentanaAgregarArticulo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(935, 555);
+            this.ClientSize = new System.Drawing.Size(701, 451);
             this.Controls.Add(this.pictureBoxAgregar);
-            this.Controls.Add(this.comboBoxCat2);
+            this.Controls.Add(this.cboCategoria);
             this.Controls.Add(this.cboMarca);
             this.Controls.Add(this.textBoxUrlImagen);
             this.Controls.Add(this.labelUrlImagen);
@@ -239,7 +223,6 @@ namespace TPWindowsFormsProgramacionIII
             this.Controls.Add(this.labelDescripcion);
             this.Controls.Add(this.labelNombre);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "VentanaAgregarArticulo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agregar Articulo";
@@ -268,7 +251,7 @@ namespace TPWindowsFormsProgramacionIII
         private System.Windows.Forms.Label labelUrlImagen;
         private System.Windows.Forms.TextBox textBoxUrlImagen;
         private System.Windows.Forms.ComboBox cboMarca;
-        private System.Windows.Forms.ComboBox comboBoxCat2;
+        private System.Windows.Forms.ComboBox cboCategoria;
         private System.Windows.Forms.PictureBox pictureBoxAgregar;
     }
 }
