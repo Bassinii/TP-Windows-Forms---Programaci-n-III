@@ -70,9 +70,9 @@ namespace TPWindowsFormsProgramacionIII
                 listaArticulos = negocio.listar();
 
                 gdvListadoDeArticulos.DataSource = listaArticulos;
-                
+
                 //gdvListadoDeArticulos.Columns["ImagenUrl"].Visible = false;
-               
+                ocultarColumnas();
                 
 
                 cargarImagen(listaArticulos[0].imagenArticulo.urlImagen);
@@ -95,6 +95,12 @@ namespace TPWindowsFormsProgramacionIII
                 
             }
             
+        }
+
+        private void ocultarColumnas()
+        {
+            gdvListadoDeArticulos.Columns["Codigo"].Visible = false;
+            gdvListadoDeArticulos.Columns["Descripcion"].Visible = false;
         }
 
         private void buttonAgregar_Click(object sender, EventArgs e)
@@ -151,10 +157,44 @@ namespace TPWindowsFormsProgramacionIII
 
         private void comboBoxPrecio_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //comboBoxPrecio.Items.Clear();
-            /*comboBoxPrecio.Items.Add("Mayor a $");
-            comboBoxPrecio.Items.Add("Menor a $");
-            comboBoxPrecio.Items.Add("Igual a $");*/
+
+        }
+        //Validar Fltros
+
+        private bool validarFiltro()
+        {
+            if(comboBoxCategoria.SelectedIndex < 0)
+            {
+                MessageBox.Show("Falta seleccionar algun item");
+                return true;
+            }
+            if(comboBoxPrecio.SelectedIndex < 0)
+            {
+                MessageBox.Show("Falta seleccionar algun item");
+                return true;
+            }
+            if (string.IsNullOrEmpty(textBoxFiltro.Text))
+            {
+                MessageBox.Show("El campo *Filtro* no puede estar vacio");
+                return true;
+            }
+            if (!soloNumeros(textBoxFiltro.Text))
+            {
+                MessageBox.Show("Por favor solo numeros");
+                return true;
+            }
+
+            return false;
+        }
+        //Para validar que sea un nro
+        private bool soloNumeros(string cadena)
+        {
+            foreach(char caracter in cadena)
+            {
+                if (!(char.IsNumber(caracter)))
+                    return false;
+            }
+            return true;
         }
         //busqueda por filtros
         private void buttonBuscar_Click(object sender, EventArgs e)
@@ -162,6 +202,10 @@ namespace TPWindowsFormsProgramacionIII
             NegocioArticulo negocio = new NegocioArticulo();
             try
             {
+                //usamos para validar que se ha ingresado un item
+                if (validarFiltro())
+                    return;
+
                 string categoria = comboBoxCategoria.SelectedItem.ToString();
                 string precio = comboBoxPrecio.SelectedItem.ToString();
                 string filtro = textBoxFiltro.Text;
@@ -185,6 +229,38 @@ namespace TPWindowsFormsProgramacionIII
             VentanaAgregarArticulo modificar = new VentanaAgregarArticulo(seleccionado);
             modificar.ShowDialog();
             cargar(); //Para que puede mostrar en la grilla nuevamente lo cargado
+        }
+        //buscar ya
+        private void buttonBuscarR_Click(object sender, EventArgs e)
+        {
+            //lo pasamos al mas rapido
+
+        }
+        //Para Busqueda mas rapida
+        private void textBoxFiltrarR_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void textBoxFiltrarR_TextChanged(object sender, EventArgs e)
+        {
+            List<Articulo> listaFiltrada;
+            string filtro = textBoxFiltrarR.Text;
+
+            if (filtro.Length >= 3)
+            {
+                listaFiltrada = listaArticulos.FindAll(x => x.nombre.ToUpper().Contains(filtro.ToUpper()) || x.marca.descripcion.ToUpper().Contains(filtro.ToUpper()) || x.categoria.descripcion.ToUpper().Contains(filtro.ToUpper()));
+
+            }
+            else
+            {
+                listaFiltrada = listaArticulos;
+            }
+
+
+            gdvListadoDeArticulos.DataSource = null;
+            gdvListadoDeArticulos.DataSource = listaFiltrada;
+            ocultarColumnas();
         }
     }
 
