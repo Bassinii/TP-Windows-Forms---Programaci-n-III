@@ -15,7 +15,7 @@ namespace ClasesDeDominio
         public Marca marca { get; set; } = new Marca();    //CHAT GPT ME RECOMENDO ESTO
         public Categoria categoria { get; set; } = new Categoria();     //CHAT GPT ME RECOMENDO ESTO, INVOCAR AL CONSTRUCTOR
 
-        //List<Imagenes> listImagenes = new List<Imagenes>();
+        public List<Imagenes> listImagenes = new List<Imagenes>(); //usamos para cargar mas de 1 imagen.-
         public Imagenes imagenArticulo;
         public float precio { get; set; }
 

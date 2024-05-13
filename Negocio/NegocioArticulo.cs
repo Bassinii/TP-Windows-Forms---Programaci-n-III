@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Data;
 using System.Drawing;
 using System.Data.SqlClient;
+using System.Security.Claims;
 
 namespace Negocio
 {
@@ -28,7 +29,7 @@ namespace Negocio
                 // datosArticulo.setearConsulta("SELECT A.Id,Codigo,Nombre,A.Descripcion,A.Descripcion, A.IdMarca , A.Precio,I.ImagenUrl FROM Articulos A, IMAGENES I WHERE A.Id = I.Id");
 
                 //Se Modifica consulta
-                datosArticulo.setearConsulta("SELECT A.Id, A.Codigo, A.Nombre, A.Descripcion, M.Descripcion AS Marca, C.Descripcion AS Categoria, A.Precio, I.ImagenUrl, M.Id, C.Id FROM ARTICULOS A LEFT JOIN Categorias C ON A.IdCategoria = C.Id LEFT JOIN Marcas M ON A.IdMarca = M.Id LEFT JOIN IMAGENES I ON A.Id = I.IdArticulo");
+                datosArticulo.setearConsulta("SELECT A.Id, A.Codigo, A.Nombre, A.Descripcion, M.Descripcion AS Marca, C.Descripcion AS Categoria, A.Precio, M.Id, C.Id FROM ARTICULOS A LEFT JOIN Categorias C ON A.IdCategoria = C.Id LEFT JOIN Marcas M ON A.IdMarca = M.Id");
                 datosArticulo.ejecutarLectura();
 
                 while (datosArticulo.Lector.Read())
@@ -40,12 +41,12 @@ namespace Negocio
                     aux.descripcion = (string)datosArticulo.Lector["Descripcion"];
                     //aux.marca = new Marca { id = int.Parse(textbox) };
                     //aux.categoria = new Categoria { descripcion = (string)datosArticulo.Lector["Categoria"] };
-                    aux.marca = new Marca { descripcion = (string)datosArticulo.Lector["Marca"], id = datosArticulo.Lector.GetInt32(8) };
+                    aux.marca = new Marca { descripcion = (string)datosArticulo.Lector["Marca"], id = datosArticulo.Lector.GetInt32(7) };
                     string categoria = string.Empty;
                     if (!datosArticulo.Lector.IsDBNull(datosArticulo.Lector.GetOrdinal("Categoria")))
                     {
                         //categoria = (string)datosArticulo.Lector["Categoria"];
-                        aux.categoria = new Categoria { descripcion = (string)datosArticulo.Lector["Categoria"], id = datosArticulo.Lector.GetInt32(9) };
+                        aux.categoria = new Categoria { descripcion = (string)datosArticulo.Lector["Categoria"], id = datosArticulo.Lector.GetInt32(8) };
 
                     }
                     else
@@ -57,8 +58,11 @@ namespace Negocio
                     
                     aux.precio = (float)datosArticulo.Lector.GetDecimal(6);
                     //corregimos para que acepte las imagenes 
-                    if (!(datosArticulo.Lector["ImagenUrl"] is DBNull))
-                        aux.imagenArticulo = new Imagenes { urlImagen = (string)datosArticulo.Lector["ImagenUrl"] };
+                    // if (!(datosArticulo.Lector["ImagenUrl"] is DBNull))
+                    //     aux.imagenArticulo = new Imagenes { urlImagen = (string)datosArticulo.Lector["ImagenUrl"] };
+
+                    aux.listImagenes = GetImagenes(aux.id); //guardamos en la lista todas las fotos del producto .-
+
 
 
                     lista.Add(aux);
@@ -76,7 +80,35 @@ namespace Negocio
                 datosArticulo.CerrarConexion();
             }
         }
+        public List<Imagenes>  GetImagenes(int idArti)
+        {
+            List<Imagenes> lista = new List<Imagenes>();
+            AccesoDatos datosArticulo = new AccesoDatos();
+            try
+            {
 
+                datosArticulo.setearConsulta("select IdArticulo , ImagenUrl from IMAGENES");
+                datosArticulo.ejecutarLectura();
+                while (datosArticulo.Lector.Read())
+                {
+                    int idArticulo = datosArticulo.Lector.GetInt32(0);
+                    string urlImagen = (string)datosArticulo.Lector["ImagenUrl"];
+
+                    Imagenes imagen = new Imagenes(idArticulo, urlImagen);
+                    if (idArti == idArticulo)
+                    {
+                        lista.Add(imagen);
+                    }
+
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
 
         /* public void agregar(Articulo aux)
          {
@@ -173,6 +205,7 @@ namespace Negocio
         {
 
             AccesoDatos datos = new AccesoDatos();
+
 
             try
             {
@@ -355,8 +388,8 @@ namespace Negocio
                     aux.categoria = new Categoria { descripcion = categori };
                     aux.precio = (float)datos.Lector.GetDecimal(6);
                     //corregimos para que acepte las imagenes 
-                    if (!(datos.Lector["ImagenUrl"] is DBNull))
-                        aux.imagenArticulo = new Imagenes { urlImagen = (string)datos.Lector["ImagenUrl"] };
+                    //if (!(datos.Lector["ImagenUrl"] is DBNull))
+                        //aux.imagenArticulo = new Imagenes { urlImagen = (string)datos.Lector["ImagenUrl"] };
 
 
                     lista.Add(aux);

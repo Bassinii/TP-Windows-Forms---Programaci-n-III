@@ -44,6 +44,9 @@
             this.buttonBuscar = new System.Windows.Forms.Button();
             this.labelFiltrarR = new System.Windows.Forms.Label();
             this.textBoxFiltrarR = new System.Windows.Forms.TextBox();
+            this.btnAnterior = new System.Windows.Forms.Button();
+            this.btnsiguiente = new System.Windows.Forms.Button();
+            this.cantidadImagen = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gdvListadoDeArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImagen)).BeginInit();
             this.SuspendLayout();
@@ -66,8 +69,8 @@
             // 
             // pictureBoxImagen
             // 
-            this.pictureBoxImagen.Location = new System.Drawing.Point(1031, 118);
-            this.pictureBoxImagen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBoxImagen.Location = new System.Drawing.Point(1013, 71);
+            this.pictureBoxImagen.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBoxImagen.Name = "pictureBoxImagen";
             this.pictureBoxImagen.Size = new System.Drawing.Size(355, 292);
             this.pictureBoxImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -78,7 +81,7 @@
             // 
             this.buttonAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAgregar.Location = new System.Drawing.Point(1067, 506);
-            this.buttonAgregar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonAgregar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAgregar.Name = "buttonAgregar";
             this.buttonAgregar.Size = new System.Drawing.Size(303, 92);
             this.buttonAgregar.TabIndex = 4;
@@ -90,7 +93,7 @@
             // 
             this.buttonModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonModificar.Location = new System.Drawing.Point(724, 539);
-            this.buttonModificar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonModificar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonModificar.Name = "buttonModificar";
             this.buttonModificar.Size = new System.Drawing.Size(304, 59);
             this.buttonModificar.TabIndex = 3;
@@ -102,7 +105,7 @@
             // 
             this.buttonEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonEliminar.Location = new System.Drawing.Point(403, 539);
-            this.buttonEliminar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonEliminar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonEliminar.Name = "buttonEliminar";
             this.buttonEliminar.Size = new System.Drawing.Size(289, 59);
             this.buttonEliminar.TabIndex = 2;
@@ -114,7 +117,7 @@
             // 
             this.buttonAtras.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAtras.Location = new System.Drawing.Point(56, 539);
-            this.buttonAtras.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonAtras.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAtras.Name = "buttonAtras";
             this.buttonAtras.Size = new System.Drawing.Size(288, 59);
             this.buttonAtras.TabIndex = 1;
@@ -208,12 +211,44 @@
             this.textBoxFiltrarR.TextChanged += new System.EventHandler(this.textBoxFiltrarR_TextChanged);
             this.textBoxFiltrarR.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxFiltrarR_KeyPress);
             // 
+            // btnAnterior
+            // 
+            this.btnAnterior.Location = new System.Drawing.Point(1054, 389);
+            this.btnAnterior.Name = "btnAnterior";
+            this.btnAnterior.Size = new System.Drawing.Size(75, 23);
+            this.btnAnterior.TabIndex = 14;
+            this.btnAnterior.Text = "Anterior";
+            this.btnAnterior.UseVisualStyleBackColor = true;
+            this.btnAnterior.Click += new System.EventHandler(this.btnAnterior_Click);
+            // 
+            // btnsiguiente
+            // 
+            this.btnsiguiente.Location = new System.Drawing.Point(1228, 389);
+            this.btnsiguiente.Name = "btnsiguiente";
+            this.btnsiguiente.Size = new System.Drawing.Size(75, 23);
+            this.btnsiguiente.TabIndex = 15;
+            this.btnsiguiente.Text = "Siguiente";
+            this.btnsiguiente.UseVisualStyleBackColor = true;
+            this.btnsiguiente.Click += new System.EventHandler(this.btnsiguiente_Click);
+            // 
+            // cantidadImagen
+            // 
+            this.cantidadImagen.AutoSize = true;
+            this.cantidadImagen.Location = new System.Drawing.Point(1184, 33);
+            this.cantidadImagen.Name = "cantidadImagen";
+            this.cantidadImagen.Size = new System.Drawing.Size(0, 16);
+            this.cantidadImagen.TabIndex = 16;
+            this.cantidadImagen.Click += new System.EventHandler(this.label1_Click);
+            // 
             // VentanaListarArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1363, 636);
+            this.Controls.Add(this.cantidadImagen);
+            this.Controls.Add(this.btnsiguiente);
+            this.Controls.Add(this.btnAnterior);
             this.Controls.Add(this.textBoxFiltrarR);
             this.Controls.Add(this.labelFiltrarR);
             this.Controls.Add(this.buttonBuscar);
@@ -263,5 +298,8 @@
         private System.Windows.Forms.Button buttonBuscar;
         private System.Windows.Forms.Label labelFiltrarR;
         private System.Windows.Forms.TextBox textBoxFiltrarR;
+        private System.Windows.Forms.Button btnAnterior;
+        private System.Windows.Forms.Button btnsiguiente;
+        private System.Windows.Forms.Label cantidadImagen;
     }
 }

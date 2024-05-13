@@ -154,7 +154,7 @@ namespace TPWindowsFormsProgramacionIII
                     articulo.descripcion = textBoxDescripcion.Text;
                     articulo.codigo = textBoxCodigo.Text;
                     articulo.precio = float.Parse(textBoxPrecio.Text);
-                    articulo.imagenArticulo = new Imagenes { urlImagen = textBoxUrlImagen.Text };
+                    //articulo.imagenArticulo = new Imagenes { urlImagen = textBoxUrlImagen.Text };
                     //SELECCION DE MARCA
 
                     Marca marcaSeleccionada = (Marca)cboMarca.SelectedItem;

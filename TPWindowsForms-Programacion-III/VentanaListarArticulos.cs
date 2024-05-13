@@ -17,6 +17,10 @@ namespace TPWindowsFormsProgramacionIII
     {   
         private List<Articulo> listaArticulos;
         List<Categoria> categorias;
+
+        List<string> listadImagenes = new List<string>(); //declaramos lista de imagen generales (para usar en funciones distintas)
+        int indiceImagen = 0;
+
         public VentanaListarArticulos()
         {
             InitializeComponent();
@@ -53,14 +57,53 @@ namespace TPWindowsFormsProgramacionIII
 
             private void gdvListadoDeArticulos_SelectionChanged(object sender, EventArgs e) 
         {
-            Articulo seleccionado = (Articulo)gdvListadoDeArticulos.CurrentRow.DataBoundItem;
-            //cargarImagen(seleccionado.imagenArticulo.urlImagen);
+            NegocioArticulo NArti = new NegocioArticulo();//aca esta la funcion que devuelve las imagenes
+            Articulo seleccionado = (Articulo)gdvListadoDeArticulos.CurrentRow.DataBoundItem;//se guardan los datos del articulo al que se hace clic en esta variable
+       
             //se corrige Metodo para que acepte imagenes en Null
-            string urlImagen = seleccionado.imagenArticulo != null ? seleccionado.imagenArticulo.urlImagen : null;
-            cargarImagen(urlImagen);
+            
+            int idArticulo = seleccionado.id > 0 ? seleccionado.id : -1;
+            List<Imagenes> lista = NArti.GetImagenes(idArticulo); //creamos lista de imagenes de ese articulo seleccionado
 
+            if(lista.Count > 1)
+            {
+                cantidadImagen.Text = indiceImagen + 1 + " / " + lista.Count;
+                for(int y = 0; y < lista.Count; y++)
+                {
+                   
+                    listadImagenes.Add(lista[y].urlImagen);//aca guardamos todas las imagenes de nuestro art
+                    //verif.Text = lista[y].urlImagen;
+                    cargarImagen(lista[y].urlImagen); //cargamos las fotos
+
+                }
+            }
+            else
+            {
+                if(listadImagenes != null)
+                {
+                    listadImagenes.Clear();
+
+
+                }
+                cantidadImagen.Text = "";
+                cargarImagen(lista[0].urlImagen);
+                //verif.Text = lista[0].urlImagen;
+            }
+
+            
         }
+        private void MostrarImagenActual()
+        {
+            if(indiceImagen < 0)
+            {
+                indiceImagen = listadImagenes.Count - 1;
 
+            }
+            else if(indiceImagen >= listadImagenes.Count) {
+                indiceImagen = 0;
+            }
+            pictureBoxImagen.Load(listadImagenes[indiceImagen]);
+        }
         //Se crea Metodo cargar
         private void cargar()
         {
@@ -73,9 +116,7 @@ namespace TPWindowsFormsProgramacionIII
 
                 //gdvListadoDeArticulos.Columns["ImagenUrl"].Visible = false;
                 ocultarColumnas();
-                
-
-                cargarImagen(listaArticulos[0].imagenArticulo.urlImagen);
+                cargarImagen(listaArticulos[0].listImagenes[0].urlImagen);
 
             }
             catch (Exception ex)
@@ -266,6 +307,39 @@ namespace TPWindowsFormsProgramacionIII
             gdvListadoDeArticulos.DataSource = null;
             gdvListadoDeArticulos.DataSource = listaFiltrada;
             ocultarColumnas();
+        }
+
+        private void btnAnterior_Click(object sender, EventArgs e)
+        {
+
+
+                if (listadImagenes.Count > 1 && listadImagenes != null)
+                {
+                    indiceImagen--;
+                    MostrarImagenActual();
+                    cantidadImagen.Text = indiceImagen + 1 + " / " + listadImagenes.Count;
+            }
+                else if(listadImagenes == null)
+                {
+                    MostrarImagenActual();
+                }
+
+         
+        }
+
+        private void btnsiguiente_Click(object sender, EventArgs e)
+        {
+            if (listadImagenes.Count > 1)
+            {
+                indiceImagen++;
+                MostrarImagenActual();
+                cantidadImagen.Text = indiceImagen + 1 + " / " + listadImagenes.Count;
+            }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 
