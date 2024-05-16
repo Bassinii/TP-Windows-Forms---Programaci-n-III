@@ -47,6 +47,7 @@
             this.btnAnterior = new System.Windows.Forms.Button();
             this.btnsiguiente = new System.Windows.Forms.Button();
             this.cantidadImagen = new System.Windows.Forms.Label();
+            this.btnBorrorFilt = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gdvListadoDeArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImagen)).BeginInit();
             this.SuspendLayout();
@@ -215,7 +216,7 @@
             // 
             this.btnAnterior.Location = new System.Drawing.Point(1054, 389);
             this.btnAnterior.Name = "btnAnterior";
-            this.btnAnterior.Size = new System.Drawing.Size(75, 23);
+            this.btnAnterior.Size = new System.Drawing.Size(90, 38);
             this.btnAnterior.TabIndex = 14;
             this.btnAnterior.Text = "Anterior";
             this.btnAnterior.UseVisualStyleBackColor = true;
@@ -225,7 +226,7 @@
             // 
             this.btnsiguiente.Location = new System.Drawing.Point(1228, 389);
             this.btnsiguiente.Name = "btnsiguiente";
-            this.btnsiguiente.Size = new System.Drawing.Size(75, 23);
+            this.btnsiguiente.Size = new System.Drawing.Size(101, 38);
             this.btnsiguiente.TabIndex = 15;
             this.btnsiguiente.Text = "Siguiente";
             this.btnsiguiente.UseVisualStyleBackColor = true;
@@ -240,12 +241,23 @@
             this.cantidadImagen.TabIndex = 16;
             this.cantidadImagen.Click += new System.EventHandler(this.label1_Click);
             // 
+            // btnBorrorFilt
+            // 
+            this.btnBorrorFilt.Location = new System.Drawing.Point(881, 438);
+            this.btnBorrorFilt.Name = "btnBorrorFilt";
+            this.btnBorrorFilt.Size = new System.Drawing.Size(125, 38);
+            this.btnBorrorFilt.TabIndex = 17;
+            this.btnBorrorFilt.Text = "Borrar Filtros";
+            this.btnBorrorFilt.UseVisualStyleBackColor = true;
+            this.btnBorrorFilt.Click += new System.EventHandler(this.btnBorrorFilt_Click);
+            // 
             // VentanaListarArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1363, 636);
+            this.Controls.Add(this.btnBorrorFilt);
             this.Controls.Add(this.cantidadImagen);
             this.Controls.Add(this.btnsiguiente);
             this.Controls.Add(this.btnAnterior);
@@ -301,5 +313,6 @@
         private System.Windows.Forms.Button btnAnterior;
         private System.Windows.Forms.Button btnsiguiente;
         private System.Windows.Forms.Label cantidadImagen;
+        private System.Windows.Forms.Button btnBorrorFilt;
     }
 }

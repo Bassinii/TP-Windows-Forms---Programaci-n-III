@@ -22,3 +22,9 @@ C:\Users\Fran Dani y Epi\Desktop\TP2PROG3\10-5a\TPWinForm_Equipo23\ClasesdeDomin
 C:\Users\Fran Dani y Epi\Desktop\TP2PROG3\10-5a\TPWinForm_Equipo23\ClasesdeDominio\obj\Debug\ClasesDeDominio.csproj.CoreCompileInputs.cache
 C:\Users\Fran Dani y Epi\Desktop\TP2PROG3\10-5a\TPWinForm_Equipo23\ClasesdeDominio\obj\Debug\ClasesdeDominio.dll
 C:\Users\Fran Dani y Epi\Desktop\TP2PROG3\10-5a\TPWinForm_Equipo23\ClasesdeDominio\obj\Debug\ClasesdeDominio.pdb
+C:\Users\Fran Dani y Epi\Desktop\TP2PROG3\13-5B\TPWinForm_Equipo23\ClasesdeDominio\bin\Debug\ClasesdeDominio.dll
+C:\Users\Fran Dani y Epi\Desktop\TP2PROG3\13-5B\TPWinForm_Equipo23\ClasesdeDominio\bin\Debug\ClasesdeDominio.pdb
+C:\Users\Fran Dani y Epi\Desktop\TP2PROG3\13-5B\TPWinForm_Equipo23\ClasesdeDominio\obj\Debug\ClasesDeDominio.csproj.AssemblyReference.cache
+C:\Users\Fran Dani y Epi\Desktop\TP2PROG3\13-5B\TPWinForm_Equipo23\ClasesdeDominio\obj\Debug\ClasesDeDominio.csproj.CoreCompileInputs.cache
+C:\Users\Fran Dani y Epi\Desktop\TP2PROG3\13-5B\TPWinForm_Equipo23\ClasesdeDominio\obj\Debug\ClasesdeDominio.dll
+C:\Users\Fran Dani y Epi\Desktop\TP2PROG3\13-5B\TPWinForm_Equipo23\ClasesdeDominio\obj\Debug\ClasesdeDominio.pdb

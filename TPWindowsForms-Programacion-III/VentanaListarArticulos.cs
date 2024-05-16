@@ -341,6 +341,14 @@ namespace TPWindowsFormsProgramacionIII
         {
 
         }
+
+        private void btnBorrorFilt_Click(object sender, EventArgs e)
+        {
+            textBoxFiltro.Text = "";
+            comboBoxCategoria.SelectedIndex = -1;
+            comboBoxPrecio.SelectedIndex = -1;
+            cargar();
+        }
     }
 
 }

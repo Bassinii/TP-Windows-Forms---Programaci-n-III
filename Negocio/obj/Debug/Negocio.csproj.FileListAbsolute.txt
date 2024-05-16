@@ -34,3 +34,12 @@ C:\Users\Fran Dani y Epi\Desktop\TP2PROG3\10-5a\TPWinForm_Equipo23\Negocio\obj\D
 C:\Users\Fran Dani y Epi\Desktop\TP2PROG3\10-5a\TPWinForm_Equipo23\Negocio\obj\Debug\Negocio.csproj.CopyComplete
 C:\Users\Fran Dani y Epi\Desktop\TP2PROG3\10-5a\TPWinForm_Equipo23\Negocio\obj\Debug\Negocio.dll
 C:\Users\Fran Dani y Epi\Desktop\TP2PROG3\10-5a\TPWinForm_Equipo23\Negocio\obj\Debug\Negocio.pdb
+C:\Users\Fran Dani y Epi\Desktop\TP2PROG3\13-5B\TPWinForm_Equipo23\Negocio\bin\Debug\Negocio.dll
+C:\Users\Fran Dani y Epi\Desktop\TP2PROG3\13-5B\TPWinForm_Equipo23\Negocio\bin\Debug\Negocio.pdb
+C:\Users\Fran Dani y Epi\Desktop\TP2PROG3\13-5B\TPWinForm_Equipo23\Negocio\bin\Debug\ClasesdeDominio.dll
+C:\Users\Fran Dani y Epi\Desktop\TP2PROG3\13-5B\TPWinForm_Equipo23\Negocio\bin\Debug\ClasesdeDominio.pdb
+C:\Users\Fran Dani y Epi\Desktop\TP2PROG3\13-5B\TPWinForm_Equipo23\Negocio\obj\Debug\Negocio.csproj.AssemblyReference.cache
+C:\Users\Fran Dani y Epi\Desktop\TP2PROG3\13-5B\TPWinForm_Equipo23\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
+C:\Users\Fran Dani y Epi\Desktop\TP2PROG3\13-5B\TPWinForm_Equipo23\Negocio\obj\Debug\Negocio.csproj.CopyComplete
+C:\Users\Fran Dani y Epi\Desktop\TP2PROG3\13-5B\TPWinForm_Equipo23\Negocio\obj\Debug\Negocio.dll
+C:\Users\Fran Dani y Epi\Desktop\TP2PROG3\13-5B\TPWinForm_Equipo23\Negocio\obj\Debug\Negocio.pdb

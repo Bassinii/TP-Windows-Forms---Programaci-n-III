@@ -87,7 +87,7 @@ namespace Negocio
             try
             {
 
-                datosArticulo.setearConsulta("select IdArticulo , ImagenUrl from IMAGENES");
+                /*datosArticulo.setearConsulta("select IdArticulo , ImagenUrl from IMAGENES");
                 datosArticulo.ejecutarLectura();
                 while (datosArticulo.Lector.Read())
                 {
@@ -101,6 +101,18 @@ namespace Negocio
                     }
 
                 }
+                return lista;*/
+                datosArticulo.setearConsulta("SELECT ImagenUrl FROM IMAGENES WHERE IdArticulo = @IdArticulo");
+                datosArticulo.setearParametro("@IdArticulo", idArti);
+                datosArticulo.ejecutarLectura();
+
+                while (datosArticulo.Lector.Read())
+                {
+                    string urlImagen = (string)datosArticulo.Lector["ImagenUrl"];
+                    Imagenes imagen = new Imagenes(idArti, urlImagen);
+                    lista.Add(imagen);
+                }
+
                 return lista;
             }
             catch (Exception ex)
@@ -173,22 +185,30 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                //datos.setearConsulta("SELECT MAX(Id) FROM ARTICULOS");
+               /* //datos.setearConsulta("SELECT MAX(Id) FROM ARTICULOS");
                 datos.setearConsulta("SELECT IDENT_CURRENT('ARTICULOS')");
                 datos.ejecutarAccion();
 
                 int idArticulo = 1 + Convert.ToInt32(datos.ejecutarScalar());
                 // Paso 1: Insertar el artículo en la tabla ARTICULOS
                 datos.setearConsulta("INSERT INTO ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio) VALUES ('" + aux.codigo + "', '" + aux.nombre + "', '" + aux.descripcion + "', " + aux.marca.id + ", " + aux.categoria.id + ", " + aux.precio + ");SELECT SCOPE_IDENTITY(); INSERT INTO IMAGENES (ImagenUrl, IdArticulo) VALUES ('" + urlImagen + "', " + idArticulo + ")");
-                datos.ejecutarAccion();
-                
+                datos.ejecutarAccion();*/
 
-                
-               
-               // datos.setearConsulta("INSERT INTO IMAGENES (ImagenUrl, IdArticulo) VALUES ('" + urlImagen + "', " + idArticulo + ")");
+                datos.setearConsulta("INSERT INTO ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio) VALUES ('" + aux.codigo + "', '" + aux.nombre + "', '" + aux.descripcion + "', " + aux.marca.id + ", " + aux.categoria.id + ", " + aux.precio + ")");
+                datos.ejecutarAccion();
+
+                datos.setearConsulta("SELECT IDENT_CURRENT('ARTICULOS')");
+                int idArticulo = Convert.ToInt32(datos.ejecutarScalar());
+
+                datos.setearConsulta("INSERT INTO IMAGENES (ImagenUrl, IdArticulo) VALUES ('" + urlImagen + "', " + idArticulo + ")");
+                datos.ejecutarAccion();
+
+
+
+                // datos.setearConsulta("INSERT INTO IMAGENES (ImagenUrl, IdArticulo) VALUES ('" + urlImagen + "', " + idArticulo + ")");
                 //datos.ejecutarAccion();
-               // agregarImagen(idArticulo, urlImagen);
-                
+                // agregarImagen(idArticulo, urlImagen);
+
             }
             catch (Exception ex)
             {
@@ -245,8 +265,8 @@ namespace Negocio
                 //datos.setearConsulta(" UPDATE MARCAS set Descripcion = @DescripcionM where id = " + articulo.marca.id + " ");
                 //datos.setearConsulta(" UPDATE CATEGORIAS set Descripcion = @DescripcionC where id = " + articulo.categoria.id + " ");
 
-                datos.setearParametro("@IdArticulo", articulo.id);
-                datos.setearParametro("@IdImagen", articulo.imagenArticulo.idArticulo);
+                datos.setearParametro("@IdArticulo", articulo.id );
+                datos.setearParametro("@IdImagen", articulo.imagenArticulo.id );
                 datos.setearParametro("@IdMarca", articulo.marca.id);
                 datos.setearParametro("@IdCategoria", articulo.categoria.id);
                 datos.setearParametro("@numero", articulo.codigo.ToString());
@@ -255,8 +275,8 @@ namespace Negocio
                 datos.setearParametro("@MarcaA", articulo.marca.id);
                 datos.setearParametro("@IdcategoriaA", articulo.categoria.id);
                 datos.setearParametro("@PrecioA", articulo.precio);
-                datos.setearParametro("@IdarticuloI", articulo.imagenArticulo.id);
-                datos.setearParametro("@imURLI", articulo.imagenArticulo.urlImagen);
+                datos.setearParametro("@IdarticuloI", articulo.imagenArticulo.idArticulo);
+                datos.setearParametro("@imURLI", articulo.imagenArticulo.urlImagen.ToString());
                 datos.setearParametro("@DescripcionM ", articulo.marca.descripcion);
                 datos.setearParametro("@DescripcionC ", articulo.categoria.descripcion);
 

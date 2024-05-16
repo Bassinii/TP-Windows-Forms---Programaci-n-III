@@ -17,7 +17,8 @@ namespace TPWindowsFormsProgramacionIII
     {
         List<Marca> marcas;
         List<Categoria> categorias;
-        private Articulo articulo = null;
+        //private Articulo articulo = null;
+        private Articulo articulo = new Articulo();
 
         public VentanaAgregarArticulo()
         {
@@ -58,8 +59,12 @@ namespace TPWindowsFormsProgramacionIII
                 textBoxDescripcion.Text = articulo.descripcion;
                 textBoxCodigo.Text = articulo.codigo;
                 textBoxPrecio.Text = articulo.precio.ToString();
-                textBoxUrlImagen.Text = articulo.imagenArticulo.urlImagen;
-                cargarImagen(articulo.imagenArticulo.urlImagen);
+                /*if(articulo.imagenArticulo.urlImagen != null)
+                {
+
+                    textBoxUrlImagen.Text = articulo.imagenArticulo.urlImagen;
+                }*/
+                //cargarImagen(articulo.imagenArticulo.urlImagen);
                 cboMarca.SelectedItem = articulo.marca;
                 cboCategoria.SelectedItem = articulo.categoria;
             }
@@ -155,6 +160,7 @@ namespace TPWindowsFormsProgramacionIII
                     articulo.codigo = textBoxCodigo.Text;
                     articulo.precio = float.Parse(textBoxPrecio.Text);
                     //articulo.imagenArticulo = new Imagenes { urlImagen = textBoxUrlImagen.Text };
+                    articulo.imagenArticulo = new Imagenes(articulo.id, textBoxUrlImagen.Text);
                     //SELECCION DE MARCA
 
                     Marca marcaSeleccionada = (Marca)cboMarca.SelectedItem;
