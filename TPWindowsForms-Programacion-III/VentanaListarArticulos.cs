@@ -342,7 +342,7 @@ namespace TPWindowsFormsProgramacionIII
 
         }
 
-        private void btnBorrorFilt_Click(object sender, EventArgs e)
+        private void label1_Click_1(object sender, EventArgs e)
         {
             textBoxFiltro.Text = "";
             comboBoxCategoria.SelectedIndex = -1;

@@ -64,9 +64,9 @@ namespace TPWindowsFormsProgramacionIII
 
                     textBoxUrlImagen.Text = articulo.imagenArticulo.urlImagen;
                 }*/
-                //cargarImagen(articulo.imagenArticulo.urlImagen);
-                cboMarca.SelectedItem = articulo.marca;
-                cboCategoria.SelectedItem = articulo.categoria;
+                //cargarImagen(this.articulo.imagenArticulo.urlImagen);
+                cboMarca.SelectedIndex = articulo.marca.id -1;
+                cboCategoria.SelectedIndex = articulo.categoria.id -1 ;
             }
 
         }
