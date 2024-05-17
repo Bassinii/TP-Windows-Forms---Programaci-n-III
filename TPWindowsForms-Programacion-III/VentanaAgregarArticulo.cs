@@ -65,8 +65,10 @@ namespace TPWindowsFormsProgramacionIII
                     textBoxUrlImagen.Text = articulo.imagenArticulo.urlImagen;
                 }*/
                 //cargarImagen(this.articulo.imagenArticulo.urlImagen);
+
                 cboMarca.SelectedIndex = articulo.marca.id -1;
                 cboCategoria.SelectedIndex = articulo.categoria.id -1 ;
+                
             }
 
         }
@@ -206,7 +208,9 @@ namespace TPWindowsFormsProgramacionIII
         {
             try
             {
+                
                 pictureBoxAgregar.Load(imagen);
+                
             }
             catch (Exception)
             {

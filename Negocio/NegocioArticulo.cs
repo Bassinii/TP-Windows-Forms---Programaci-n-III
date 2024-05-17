@@ -247,7 +247,7 @@ namespace Negocio
                             IdArticulo = @IdarticuloI, 
                             ImagenUrl = @imURLI 
                         WHERE 
-                            id = @IdImagen;
+                            IdArticulo = @IdArticulo;
 
                         UPDATE MARCAS 
                         SET 
@@ -265,8 +265,8 @@ namespace Negocio
                 //datos.setearConsulta(" UPDATE MARCAS set Descripcion = @DescripcionM where id = " + articulo.marca.id + " ");
                 //datos.setearConsulta(" UPDATE CATEGORIAS set Descripcion = @DescripcionC where id = " + articulo.categoria.id + " ");
 
-                datos.setearParametro("@IdArticulo", articulo.id );
-                datos.setearParametro("@IdImagen", articulo.imagenArticulo.id );
+                datos.setearParametro("@IdArticulo", articulo.id);
+                datos.setearParametro("@IdImagen", articulo.imagenArticulo.id);
                 datos.setearParametro("@IdMarca", articulo.marca.id);
                 datos.setearParametro("@IdCategoria", articulo.categoria.id);
                 datos.setearParametro("@numero", articulo.codigo.ToString());
@@ -276,7 +276,8 @@ namespace Negocio
                 datos.setearParametro("@IdcategoriaA", articulo.categoria.id);
                 datos.setearParametro("@PrecioA", articulo.precio);
                 datos.setearParametro("@IdarticuloI", articulo.imagenArticulo.idArticulo);
-                datos.setearParametro("@imURLI", articulo.imagenArticulo.urlImagen.ToString());
+                //datos.setearParametro("@imURLI", urlImagen);
+                datos.setearParametro("@imURLI", articulo.imagenArticulo.urlImagen);
                 datos.setearParametro("@DescripcionM ", articulo.marca.descripcion);
                 datos.setearParametro("@DescripcionC ", articulo.categoria.descripcion);
 

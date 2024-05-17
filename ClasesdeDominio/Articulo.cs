@@ -16,7 +16,7 @@ namespace ClasesDeDominio
         public Categoria categoria { get; set; } = new Categoria();     //CHAT GPT ME RECOMENDO ESTO, INVOCAR AL CONSTRUCTOR
 
         public List<Imagenes> listImagenes = new List<Imagenes>(); //usamos para cargar mas de 1 imagen.-
-        public Imagenes imagenArticulo;
+        public Imagenes imagenArticulo { get; set; } // se agrega get y set para que se logre Modificar .-D
         public float precio { get; set; }
 
         public Articulo() {;}

@@ -59,38 +59,42 @@ namespace TPWindowsFormsProgramacionIII
         {
             NegocioArticulo NArti = new NegocioArticulo();//aca esta la funcion que devuelve las imagenes
             Articulo seleccionado = (Articulo)gdvListadoDeArticulos.CurrentRow.DataBoundItem;//se guardan los datos del articulo al que se hace clic en esta variable
-       
+
             //se corrige Metodo para que acepte imagenes en Null
-            
+            if (seleccionado == null)
+                return;
+
             int idArticulo = seleccionado.id > 0 ? seleccionado.id : -1;
             List<Imagenes> lista = NArti.GetImagenes(idArticulo); //creamos lista de imagenes de ese articulo seleccionado
 
-            if(lista.Count > 1)
-            {
-                cantidadImagen.Text = indiceImagen + 1 + " / " + lista.Count;
-                for(int y = 0; y < lista.Count; y++)
-                {
-                   
-                    listadImagenes.Add(lista[y].urlImagen);//aca guardamos todas las imagenes de nuestro art
-                    //verif.Text = lista[y].urlImagen;
-                    cargarImagen(lista[y].urlImagen); //cargamos las fotos
 
+            if (lista == null || lista.Count == 0)
+            {
+                // No hay imágenes para este artículo
+                cantidadImagen.Text = "";
+                cargarImagen(null); // Manejar carga de imagen nula en el método cargarImagen
+                return;
+            }
+
+            // Limpiar lista de imágenes previas
+            listadImagenes.Clear();
+
+            if (lista.Count > 1)
+            {
+                cantidadImagen.Text = "1 / " + lista.Count;
+                foreach (var imagen in lista)
+                {
+                    listadImagenes.Add(imagen.urlImagen);
                 }
+                cargarImagen(lista[0].urlImagen); // Cargar la primera imagen de la lista
             }
             else
             {
-                if(listadImagenes != null)
-                {
-                    listadImagenes.Clear();
-
-
-                }
                 cantidadImagen.Text = "";
-                cargarImagen(lista[0].urlImagen);
-                //verif.Text = lista[0].urlImagen;
+                cargarImagen(lista[0].urlImagen); // Cargar la única imagen de la lista
             }
 
-            
+
         }
         private void MostrarImagenActual()
         {
