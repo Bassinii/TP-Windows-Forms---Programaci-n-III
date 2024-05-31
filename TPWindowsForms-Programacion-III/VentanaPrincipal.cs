@@ -40,5 +40,11 @@ namespace TPWindowsFormsProgramacionIII
             Alta.Show();
            
         }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            VentanaMarcaslistar listarM = new VentanaMarcaslistar();
+            listarM.Show();
+        }
     }
 }

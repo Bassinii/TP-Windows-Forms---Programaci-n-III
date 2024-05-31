@@ -180,7 +180,7 @@ namespace Negocio
             }
         }
          */
-        public void agregar(Articulo aux, string urlImagen)
+        public int agregar(Articulo aux)
         {
             AccesoDatos datos = new AccesoDatos();
             try
@@ -199,9 +199,9 @@ namespace Negocio
 
                 datos.setearConsulta("SELECT IDENT_CURRENT('ARTICULOS')");
                 int idArticulo = Convert.ToInt32(datos.ejecutarScalar());
+                return idArticulo;
 
-                datos.setearConsulta("INSERT INTO IMAGENES (ImagenUrl, IdArticulo) VALUES ('" + urlImagen + "', " + idArticulo + ")");
-                datos.ejecutarAccion();
+                
 
 
 
@@ -218,6 +218,42 @@ namespace Negocio
             finally
             {
                 datos.CerrarConexion();
+            }
+        }
+        public void AgregarTablaImagen(string urlImagen, int idArticulo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("INSERT INTO IMAGENES (ImagenUrl, IdArticulo) VALUES ('" + urlImagen + "', " + idArticulo + ")");
+                datos.ejecutarAccion();
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public List<string> VerImagenes(int id)
+        {
+            AccesoDatos datosArticulo = new AccesoDatos();
+            List<string> lista = new List<string>();
+            try
+            {
+                datosArticulo.setearConsulta($"select ImagenUrl from IMAGENES where IdArticulo = '{id}'");
+                datosArticulo.ejecutarLectura();
+                while (datosArticulo.Lector.Read())
+                {
+                    lista.Add(datosArticulo.Lector["ImagenUrl"].ToString());
+                    
+                }
+                return lista;
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
 
@@ -242,13 +278,6 @@ namespace Negocio
                         WHERE 
                             id = @IdArticulo;
 
-                        UPDATE IMAGENES 
-                        SET 
-                            IdArticulo = @IdarticuloI, 
-                            ImagenUrl = @imURLI 
-                        WHERE 
-                            IdArticulo = @IdArticulo;
-
                         UPDATE MARCAS 
                         SET 
                             Descripcion = @DescripcionM 
@@ -266,7 +295,7 @@ namespace Negocio
                 //datos.setearConsulta(" UPDATE CATEGORIAS set Descripcion = @DescripcionC where id = " + articulo.categoria.id + " ");
 
                 datos.setearParametro("@IdArticulo", articulo.id);
-                datos.setearParametro("@IdImagen", articulo.imagenArticulo.id);
+                //datos.setearParametro("@IdImagen", articulo.imagenArticulo.id);
                 datos.setearParametro("@IdMarca", articulo.marca.id);
                 datos.setearParametro("@IdCategoria", articulo.categoria.id);
                 datos.setearParametro("@numero", articulo.codigo.ToString());
@@ -275,13 +304,23 @@ namespace Negocio
                 datos.setearParametro("@MarcaA", articulo.marca.id);
                 datos.setearParametro("@IdcategoriaA", articulo.categoria.id);
                 datos.setearParametro("@PrecioA", articulo.precio);
-                datos.setearParametro("@IdarticuloI", articulo.imagenArticulo.idArticulo);
+                //datos.setearParametro("@IdarticuloI", articulo.imagenArticulo.idArticulo);
                 //datos.setearParametro("@imURLI", urlImagen);
-                datos.setearParametro("@imURLI", articulo.imagenArticulo.urlImagen);
+                //datos.setearParametro("@imURLI", articulo.imagenArticulo.urlImagen);
                 datos.setearParametro("@DescripcionM ", articulo.marca.descripcion);
                 datos.setearParametro("@DescripcionC ", articulo.categoria.descripcion);
 
                 datos.ejecutarAccion();
+               /* List<String> lista = VerImagenes(articulo.id);
+                for(int y = 0; y < lista.Count; y++)
+                {
+                    datos.setearConsulta($"UPDATE IMAGENES SET ImagenUrl = '{lista[y]}' WHERE IdArticulo = '{articulo.id}';");
+                    //datos.setearParametro("@IdArticulo", articulo.id);
+                    //datos.setearParametro("@imURLI", lista[y]);
+                    datos.ejecutarAccion();
+                }*/
+                
+
 
             }
             catch (Exception ex)
@@ -423,24 +462,6 @@ namespace Negocio
                 throw ex;
             }
         }
-        /*private void agregarImagen(int idArticulo, string urlImagen)
-{
-   AccesoDatos datos = new AccesoDatos();
-   try
-   {
-       datos.setearConsulta("INSERT INTO IMAGENES (ImagenUrl, IdArticulo) VALUES ('" + urlImagen + "', " + idArticulo + ")");
-       datos.ejecutarAccion();
-   }
-   catch (Exception ex)
-   {
-       MessageBox.Show(ex.ToString());
-       throw ex;
-   }
-   finally
-   {
-       datos.CerrarConexion();
-   }
-}
-*/
+
     }
 }      

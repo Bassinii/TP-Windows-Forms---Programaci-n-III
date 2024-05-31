@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,16 +20,22 @@ namespace TPWindowsFormsProgramacionIII
         List<Categoria> categorias;
         //private Articulo articulo = null;
         private Articulo articulo = new Articulo();
+        private List<string> listaUrl = new List<string>();
+        private bool esModoModificacion;
+        
 
         public VentanaAgregarArticulo()
         {
             InitializeComponent();
         }
-        public VentanaAgregarArticulo(Articulo arti)
+        public VentanaAgregarArticulo(Articulo arti, List<string> listaUrl)
         {
             InitializeComponent();
             this.articulo = arti;
-            Text = "Modificar articulo";
+            // Text = "Modificar articulo";
+            Text = esModoModificacion ? "Modificar Articulo" : "Agregar Articulo";
+            this.listaUrl = listaUrl;
+            esModoModificacion = articulo != null;
         }
 
 
@@ -59,16 +66,21 @@ namespace TPWindowsFormsProgramacionIII
                 textBoxDescripcion.Text = articulo.descripcion;
                 textBoxCodigo.Text = articulo.codigo;
                 textBoxPrecio.Text = articulo.precio.ToString();
-                /*if(articulo.imagenArticulo.urlImagen != null)
-                {
+                textBoxUrlImagen.Text = esModoModificacion ? listaUrl.FirstOrDefault() : String.Join(",", listaUrl);
 
-                    textBoxUrlImagen.Text = articulo.imagenArticulo.urlImagen;
-                }*/
-                //cargarImagen(this.articulo.imagenArticulo.urlImagen);
-
+                //textBoxUrlImagen.Text = String.Join(",", listaUrl);
                 cboMarca.SelectedIndex = articulo.marca.id -1;
                 cboCategoria.SelectedIndex = articulo.categoria.id -1 ;
-                
+                if (listaUrl != null && listaUrl.Count > 0)
+                {
+                    cargarImagen(listaUrl[0]);
+                }
+
+                if (esModoModificacion)
+                {
+                    textBoxUrlImagen.Enabled = false;
+                    labelUrlImagen.Text = "Imagen actual (no editable)";
+                }
             }
 
         }
@@ -161,8 +173,9 @@ namespace TPWindowsFormsProgramacionIII
                     articulo.descripcion = textBoxDescripcion.Text;
                     articulo.codigo = textBoxCodigo.Text;
                     articulo.precio = float.Parse(textBoxPrecio.Text);
-                    //articulo.imagenArticulo = new Imagenes { urlImagen = textBoxUrlImagen.Text };
-                    articulo.imagenArticulo = new Imagenes(articulo.id, textBoxUrlImagen.Text);
+                    // string[] vectorUrl = textBoxUrlImagen.Text.Trim().Split(',');
+                    string[] vectorUrl = !esModoModificacion ? textBoxUrlImagen.Text.Trim().Split(',') : listaUrl.ToArray();
+                    
                     //SELECCION DE MARCA
 
                     Marca marcaSeleccionada = (Marca)cboMarca.SelectedItem;
@@ -181,8 +194,14 @@ namespace TPWindowsFormsProgramacionIII
                     }
                     else
                     {
-                        artiNeg.agregar(articulo, articulo.imagenArticulo.urlImagen);
+                        int idArticulo = artiNeg.agregar(articulo);
+                        for(int y=0;y < vectorUrl.Count(); y++)
+                        {
+                            artiNeg.AgregarTablaImagen( vectorUrl[y], idArticulo);
+
+                        }
                         MessageBox.Show("Agregado exitosamente");
+
                     }
 
                 }

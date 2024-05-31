@@ -272,10 +272,12 @@ namespace TPWindowsFormsProgramacionIII
             //LE PASO POR PARAMENTRO EL OBJETO ARTICULO QUE QUIERO MODIFAR, A LA VENTANA O FRM
 
             Articulo seleccionado;
+            NegocioArticulo artiNeg = new NegocioArticulo();
             if (gdvListadoDeArticulos.CurrentRow != null)
             {
-                seleccionado = (Articulo)gdvListadoDeArticulos.CurrentRow.DataBoundItem; 
-                VentanaAgregarArticulo modificar = new VentanaAgregarArticulo(seleccionado);
+                seleccionado = (Articulo)gdvListadoDeArticulos.CurrentRow.DataBoundItem;
+                List<string> lista = artiNeg.VerImagenes(seleccionado.id);
+                VentanaAgregarArticulo modificar = new VentanaAgregarArticulo(seleccionado,lista);
                 modificar.ShowDialog();
                 cargar(); //Para que puede mostrar en la grilla nuevamente lo cargado
             }
@@ -352,6 +354,7 @@ namespace TPWindowsFormsProgramacionIII
             comboBoxCategoria.SelectedIndex = -1;
             comboBoxPrecio.SelectedIndex = -1;
             cargar();
+           
         }
     }
 

@@ -41,6 +41,50 @@ namespace Negocio
                 datosArticulo.CerrarConexion();
             }
         }
+        public void  AgregarMarca(Marca obj)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta($"INSERT INTO MARCAS (Descripcion) VALUES ('{obj.descripcion}')");
+                datos.ejecutarAccion();
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public void ModificarMarca(Marca obj)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta($"UPDATE MARCAS SET Descripcion = '{obj.descripcion}' WHERE Id = '{obj.id}' ");
+                datos.ejecutarAccion();
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public void eliminar(int id)
+        {
+            try
+            {
+                AccesoDatos datos = new AccesoDatos();
+                datos.setearConsulta($"delete from MARCAS where id= @id");
+                datos.setearParametro("@id", id);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
     }
 }

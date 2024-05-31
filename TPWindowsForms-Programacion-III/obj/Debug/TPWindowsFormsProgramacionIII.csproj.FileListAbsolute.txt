@@ -164,3 +164,5 @@ C:\Users\Fran Dani y Epi\Desktop\TP2PROG3\16-5A\TPWinForm_Equipo23\TPWindowsForm
 C:\Users\Fran Dani y Epi\Desktop\TP2PROG3\16-5A\TPWinForm_Equipo23\TPWindowsForms-Programacion-III\obj\Debug\TPWindowsFormsProgramacionIII.csproj.CopyComplete
 C:\Users\Fran Dani y Epi\Desktop\TP2PROG3\16-5A\TPWinForm_Equipo23\TPWindowsForms-Programacion-III\obj\Debug\TPWindowsFormsProgramacionIII.exe
 C:\Users\Fran Dani y Epi\Desktop\TP2PROG3\16-5A\TPWinForm_Equipo23\TPWindowsForms-Programacion-III\obj\Debug\TPWindowsFormsProgramacionIII.pdb
+C:\Users\Fran Dani y Epi\Desktop\TP2PROG3\16-5A\TPWinForm_Equipo23\TPWindowsForms-Programacion-III\obj\Debug\TPWindowsFormsProgramacionIII.VentanaMarcaslistar.resources
+C:\Users\Fran Dani y Epi\Desktop\TP2PROG3\16-5A\TPWinForm_Equipo23\TPWindowsForms-Programacion-III\obj\Debug\TPWindowsFormsProgramacionIII.AgregarMarca.resources
